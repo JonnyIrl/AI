@@ -1,81 +1,39 @@
-#include <iostream>
-#ifndef _PLAYER
-#define _PLAYER
+#ifndef PLAYER
+#define PLAYER
 
+#include "Common.h"
 using namespace std;
+
 
 class Player
 {
+
 public:
 	Player();
-	void Update();
+	void Update(float time);
+	void SetPosition(sf::Vector2f pos);
+	void SetDirection(sf::Vector2f dir);
+	sf::Vector2f  GetPosition();
 	void Draw(sf::RenderWindow& window);
-	bool move;
-	//get and set methods
-	void setPosition(sf::Vector2f);
-	sf::Vector2f getPosition();
-	void setVelocity(sf::Vector2f);
-	sf::Vector2f getVelocity();
-	void setAlive(bool);
-	bool getAlive();
-	void setIfFlying(bool);
-	bool getIfFlying();
-	void setName(string);
-	string getName();
-	void setScore(int);
-	int getScore();
-	sf::RectangleShape getShape();
-	double getAngle();
-	void setAngle(double);
-	//end get and set
 
-	void SeperateUpdate();
-	void updateTex(sf::Texture, sf::Texture);
-	sf::Vector2f m_pos;
-	sf::Vector2f m_vel;
-	//sf::Vector2f gravity
-	sf::RectangleShape m_box;
-	double angle;
+
+private:
+	sf::Texture texture;
+	sf::Sprite sprite;
+	float speed;
+	sf::Vector2f m_Direction;
+	sf::Vector2f m_Position;
+	float m_Radius;
+	float rotation;
+	void Rotate(int dir);
+	float ToRadian(float deg);
 	float rotationSpeed;
-	float recoverySpeed;
-	bool colliding;
-	bool rotating;
+	void KeepInBounds();
 
-	float jump_speed;
-	float jump_wpn_speed;
-	float move_speed;
-	sf::Time timeSinceLastUpdate;
-	float deltaTime;
 
-	float grav;
-	sf::Clock clock;
-	//PLAYER WEAPONS
-	bool rock, paper, scissors;
-	bool colourchange;
-	bool jumpingSound;
-	bool playJumpingSound;
-	bool flyingSound;
-	bool ifFlying;
-	bool mainGameSound;
-
-	bool sideSwitch;
-	float switchSpeed;
-	string currentSide;
-	float targetRotation;
-
-	bool poweredUp;
-	float powerCount;
-	bool isVisible;
-	int rotSpeed1;
-	int rotSpeed2;
-	int rotSpeed3;
-protected:
-
-	sf::Sprite m_spr;
-	bool m_alive;
-	bool m_gravity;
-	string m_name;
-	int m_score;
 };
+//public vector m_Direction;
+
+
 
 #endif 
