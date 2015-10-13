@@ -2,6 +2,7 @@
 #define PLAYER
 
 #include "Common.h"
+#include "vectorMath.h"
 using namespace std;
 
 
@@ -26,7 +27,6 @@ private:
 	float m_Radius;
 	float rotation;
 	void Rotate(int dir);
-	float ToRadian(float deg);
 	float rotationSpeed;
 	void KeepInBounds();
 

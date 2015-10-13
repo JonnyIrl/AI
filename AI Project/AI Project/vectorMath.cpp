@@ -27,3 +27,10 @@ float VectorMath::ToRadian(float deg)
 {
 	return (deg* M_PI) / 180;
 }
+float VectorMath::GetAngleBetween(sf::Vector2f vec1, sf::Vector2f vec2)
+{
+
+	//to be completed
+
+	return 1;
+}

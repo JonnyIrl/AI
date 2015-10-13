@@ -14,7 +14,7 @@ Player::Player()
 	speed = 200;
 	rotation = 0;
 	rotationSpeed = 2;
-	m_Direction = sf::Vector2f(cos(ToRadian(rotation)), sin(ToRadian(rotation)));
+	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 
 }
 void Player::Update(float time)
@@ -61,12 +61,8 @@ void Player::Draw(sf::RenderWindow& window)
 void Player::Rotate(int dir)
 {
 	rotation += rotationSpeed*dir;
-	m_Direction = sf::Vector2f(cos(ToRadian(rotation)), sin(ToRadian(rotation)));
+	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 
-}
-float Player::ToRadian(float deg)
-{
-	return (deg*3.14) / 180;
 }
 void Player::KeepInBounds()
 {
