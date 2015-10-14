@@ -27,10 +27,19 @@ float VectorMath::ToRadian(float deg)
 {
 	return (deg* M_PI) / 180;
 }
+float VectorMath::GetLength(sf::Vector2f vec)
+{
+	return sqrt((vec.x * vec.x) + (vec.y * vec.y));
+}
 float VectorMath::GetAngleBetween(sf::Vector2f vec1, sf::Vector2f vec2)
 {
+	float dot = GetDotProduct(vec1, vec2);
+	float det = vec1.x * vec2.y - vec1.y*vec2.x;
+	return ToRadian(atan2(det, dot));	
+}
+float VectorMath::GetDotProduct(sf::Vector2f vec1, sf::Vector2f vec2)
+{
 
-	//to be completed
+	return (vec1.x * vec2.x) + (vec1.y * vec2.y);
 
-	return 1;
 }

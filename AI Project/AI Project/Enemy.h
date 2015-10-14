@@ -40,11 +40,10 @@ private:
 	//variables
 	float m_Radius;
 	float orientation;
-	float newOrientation;
+	float angleBetween;
 	float rotationSpeed;
 	//methods
-	float getNewOrientation(sf::Vector2f velocity);
-	void Rotate();
+	void Rotate(float time);
 
 	//for drawing sprite
 	sf::Texture texture;

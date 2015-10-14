@@ -12,19 +12,16 @@ Enemy::Enemy()
 	maxSpeed = 50;
 	speed = 100;
 	orientation = 0;
-	newOrientation = orientation;
+	angleBetween = 0;
 	acceleration = 0;
-	rotationSpeed = 2;
+	rotationSpeed = 100;
 	m_Direction = sf::Vector2f(1, 0);
 }
 void Enemy::Update(float time, sf::Vector2f target)
 {
 	seek(target);
-	Rotate();
+	Rotate(time);
 	move(time);
-
-
-
 	KeepInBounds();
 	sprite.setPosition(m_Position);
 }
@@ -34,10 +31,10 @@ void Enemy::move(float time)
 }
 void Enemy::KeepInBounds()
 {
-	if (m_Position.x + 36 < 0){ m_Position.x = 800; }
-	else if (m_Position.x > 800){ m_Position.x = -36; }
-	if (m_Position.y + 20 < 0){ m_Position.y = 600; }
-	else if (m_Position.y > 600){ m_Position.y = -20; }
+	if (m_Position.x + 36 < 0){ m_Position.x = 800 + 36; }
+	else if (m_Position.x > 800 + 36){ m_Position.x = -36; }
+	if (m_Position.y + 36 < 0){ m_Position.y = 600 + 36; }
+	else if (m_Position.y > 600 + 36){ m_Position.y = -36; }
 }
 void Enemy::SetPosition(sf::Vector2f pos)
 {
@@ -68,53 +65,20 @@ void Enemy::seek(sf::Vector2f target)
 	vel = VectorMath::GetInstance()->Normalise(vel);
 	//Velocity = velocity * maxSpeed
 	//Orientation = getNewOrientation(orientation, velocity)
-	newOrientation = getNewOrientation(vel);
+	angleBetween = VectorMath::GetInstance()->GetAngleBetween(m_Direction, vel);
 
 }
-float Enemy::getNewOrientation(sf::Vector2f vec)
+
+void Enemy::Rotate(float time)
 {
-	float angle = atan2f(vec.y, vec.x) * 180 / 3.14;
-	//angle = (int)angle % 360;
-	return angle;
-}
-void Enemy::Rotate()
-{
-
-
-
-	if (newOrientation < orientation)
+	//cout << angleBetween << endl;
+	if (angleBetween > 0)
 	{
-		float angleBetween = newOrientation - orientation;
-		if (angleBetween < -180)
-		{
-			orientation += rotationSpeed;
-		}
-		else
-		{
-			orientation -= rotationSpeed;
-		}
+		orientation += rotationSpeed * time;
 	}
-	else if (newOrientation > orientation)
+	else if (angleBetween < 0)
 	{
-		float angleBetween = newOrientation - orientation;
-		if (angleBetween < -180)
-		{
-			orientation -= rotationSpeed;
-		}
-		else
-		{
-			orientation += rotationSpeed;
-		}
-
+		orientation -= rotationSpeed * time;
 	}
-	if (orientation > 180)
-	{
-		orientation = -180 + ((int)orientation % 180);
-	}
-	if (orientation < -180)
-	{
-		orientation = 180 + ((int)orientation % 180);
-	}
-
 	m_Direction = VectorMath::GetInstance()->Normalise(sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(orientation)), sin(VectorMath::GetInstance()->ToRadian(orientation))));
 }

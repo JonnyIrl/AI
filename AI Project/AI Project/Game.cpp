@@ -1,6 +1,6 @@
 #include "Common.h"
 #include "Player.h"
-
+#include "Enemy.h"
 
 
 ////////////////////////////////////////////////////////////
@@ -13,7 +13,18 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 600, 32), "SFML First Program");
 	Player player;
 	player.SetPosition(sf::Vector2f(400, 300));
+	float speed;
+	float angle;
+	const int maxEnemy = 1;
+	Enemy enemy_Array[maxEnemy];
 
+
+	for (int i = 0; i < maxEnemy; i++)//assign random speed and position to each triangle
+	{
+		angle = (rand() % 360 + 1);
+		sf::Vector2f pos((rand() % 720 + 21), (rand() % 520 + 21));
+		enemy_Array[i].SetPosition(pos);
+	}// end for (int i = 0 ; i < maxTriangles;i++)
 
 
 	//clock & frame rate
@@ -46,13 +57,21 @@ int main()
 
 		player.Update(time);
 		
+		for (int i = 0; i < maxEnemy; i++)
+		{
+			enemy_Array[i].Update(time, player.GetPosition());
+		}
+
 		//prepare frame
 		window.clear();
 
 		//draw here
 
 		player.Draw(window);
-
+		for (int i = 0; i < maxEnemy; i++)
+		{
+			enemy_Array[i].Draw(window);
+		}// end for (int i = 0; i < maxEnemy ;i++)
 
 		// Finally, display rendered frame on screen 
 		window.display();

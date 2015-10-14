@@ -13,7 +13,7 @@ Player::Player()
 
 	speed = 200;
 	rotation = 0;
-	rotationSpeed = 2;
+	rotationSpeed = 5;
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 
 }
