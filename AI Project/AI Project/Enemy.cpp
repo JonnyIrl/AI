@@ -7,8 +7,10 @@ Enemy::Enemy()
 	{
 
 	}
+	sf::Vector2u size = texture.getSize();
+	m_Radius = (sqrt((size.x* size.x) + (size.y * size.y))) / 2;
 	sprite.setTexture(texture);
-	sprite.setOrigin(sf::Vector2f(35.5f, 20));
+	sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
 	maxSpeed = 50;
 	speed = 100;
 	orientation = 0;

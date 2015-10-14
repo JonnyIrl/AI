@@ -21,16 +21,17 @@ public:
 private:
 	//position
 	//variables
-	sf::Vector2f m_Position;
+	sf::Vector2f m_Position;// posiiton of enemy 
+	float m_Radius; // radius of the object for colision detection
 	//methods
 
 
 	//moving
 	//variables
-	sf::Vector2f m_Direction;
-	float maxSpeed;
-	float speed;
-	float acceleration;
+	sf::Vector2f m_Direction;// direction of enemy as a normalised vector
+	float maxSpeed;// measure in pixels per second 
+	float speed;// measure in pixels per second 
+	float acceleration; // measure in pixels per second squared 
 	//methods
 	void move(float time);
 	void KeepInBounds();
@@ -38,16 +39,16 @@ private:
 
 	//rotating
 	//variables
-	float m_Radius;
-	float orientation;
-	float angleBetween;
-	float rotationSpeed;
+	
+	float orientation;// which wAY currently facing measured in degress
+	float angleBetween; // the angle betwswen the current direction and the direction vector to the target 
+	float rotationSpeed;// is measured in degrees per second
 	//methods
 	void Rotate(float time);
 
 	//for drawing sprite
-	sf::Texture texture;
-	sf::Sprite sprite;
+	sf::Texture texture; //holds the sprites texture 
+	sf::Sprite sprite; //holds the sprite
 
 
 

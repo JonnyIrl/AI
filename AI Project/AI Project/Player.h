@@ -21,13 +21,13 @@ public:
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
-	float speed;
+	float speed; // measure in pixels per second 
 	sf::Vector2f m_Direction;
 	sf::Vector2f m_Position;
 	float m_Radius;
 	float rotation;
-	void Rotate(int dir);
-	float rotationSpeed;
+	void Rotate(int dir,float time);
+	float rotationSpeed; // is measured in degrees per second
 	void KeepInBounds();
 
 

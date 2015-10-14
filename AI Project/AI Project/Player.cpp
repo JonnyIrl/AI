@@ -13,7 +13,7 @@ Player::Player()
 
 	speed = 200;
 	rotation = 0;
-	rotationSpeed = 5;
+	rotationSpeed = 90;
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 
 }
@@ -22,12 +22,12 @@ void Player::Update(float time)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		// left key is pressed: move our character
-		Rotate(-1);
+		Rotate(-1, time);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		// left key is pressed: move our character
-		Rotate(1);
+		Rotate(1, time);
 	}
 
 
@@ -58,9 +58,9 @@ void Player::Draw(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
-void Player::Rotate(int dir)
+void Player::Rotate(int dir, float time)
 {
-	rotation += rotationSpeed*dir;
+	rotation += rotationSpeed*dir * time;
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 
 }

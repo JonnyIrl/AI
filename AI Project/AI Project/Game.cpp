@@ -15,7 +15,7 @@ int main()
 	player.SetPosition(sf::Vector2f(400, 300));
 	float speed;
 	float angle;
-	const int maxEnemy = 1;
+	const int maxEnemy = 100;
 	Enemy enemy_Array[maxEnemy];
 
 
