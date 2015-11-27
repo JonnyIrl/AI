@@ -11,7 +11,7 @@ void Pause::Update(float time)
 {
 
 }
-void Pause::Draw(Play * playscreen, sf::RenderWindow& window)
+void Pause::Draw(PlayGame * playscreen, sf::RenderWindow& window)
 {
 	playscreen->Draw(window);
 

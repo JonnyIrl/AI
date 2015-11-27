@@ -83,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateController.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -96,6 +97,7 @@
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="GameStateController.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Pause.h" />

@@ -1,31 +1,29 @@
 #include "Play.h"
 
 
-Play::Play( int SCREEN_WIDTH, int SCREEN_HEIGHT)
+PlayGame::PlayGame(int SCREEN_WIDTH, int SCREEN_HEIGHT)
 {
 	player = new Player(SCREEN_WIDTH,SCREEN_HEIGHT);
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
-
+	EnemyManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
-void Play::Init()
+void PlayGame::Init()
 {
-
+	
 }
 
-void Play::Update(float time){
+void PlayGame::Update(float time){
+	EnemyManager::GetInstance()->Update(time, player);
 	player->Update(time);
 }
 
-void Play::Draw(sf::RenderWindow& window){
+void PlayGame::Draw(sf::RenderWindow& window){
 	player->Draw(window);
+	EnemyManager::GetInstance()->Draw(window);
 }
 
-
-
-
-
-void Play::ResetAll(){
+void PlayGame::ResetAll(){
 
 }
 

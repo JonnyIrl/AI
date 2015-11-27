@@ -18,7 +18,7 @@ public:
 	}
 	void Init();
 	void Update(float time);
-	void Draw(Play *, sf::RenderWindow&);
+	void Draw(PlayGame *, sf::RenderWindow&);
 
 
 };

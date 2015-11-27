@@ -2,6 +2,7 @@
 #define OBJECT
 #include "Common.h"
 #include "vectorMath.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -11,7 +12,8 @@ class Enemy
 
 public:
 	Enemy();
-	void Update(float time, sf::Vector2f target);
+	void Init(sf::Texture* texture, sf::Vector2f pos);
+	void Update(float time, Player* p);
 	void SetPosition(sf::Vector2f pos);
 	void SetDirection(sf::Vector2f dir);
 	sf::Vector2f  GetPosition();

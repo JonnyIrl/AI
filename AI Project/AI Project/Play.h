@@ -5,15 +5,14 @@
 
 #include "GameStateController.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 
-
-class Play{
+class PlayGame{
 private:
 	Player* player;
 public:
-	Play(int w, int h);
-	~Play(){
+	PlayGame(int w, int h);
+	~PlayGame(){
 		delete player;
 	}
 	void Init();

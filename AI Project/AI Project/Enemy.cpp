@@ -3,28 +3,35 @@
 
 Enemy::Enemy()
 {
-	if (!texture.loadFromFile("Assets/jet2.png"))
-	{
+	
+	
+}
 
-	}
-	sf::Vector2u size = texture.getSize();
+void Enemy::Init(sf::Texture* texture, sf::Vector2f pos)
+{
+	
+	sf::Vector2u size = texture->getSize();
 	m_Radius = (sqrt((size.x* size.x) + (size.y * size.y))) / 2;
-	sprite.setTexture(texture);
+	sprite.setTexture(*texture);
 	sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
-	maxSpeed = 50;
+	maxSpeed = 100;
 	speed = 100;
 	orientation = 0;
 	angleBetween = 0;
 	acceleration = 0;
 	rotationSpeed = 100;
 	m_Direction = sf::Vector2f(1, 0);
+	m_Position = pos;
+	sprite.setPosition(m_Position);
 }
-void Enemy::Update(float time, sf::Vector2f target)
+
+void Enemy::Update(float time, Player* p )
 {
-	seek(target);
+
+	seek(p->GetPosition());
 	Rotate(time);
 	move(time);
-	KeepInBounds();
+	//KeepInBounds();
 	sprite.setPosition(m_Position);
 }
 void Enemy::move(float time)
@@ -65,7 +72,6 @@ void Enemy::seek(sf::Vector2f target)
 	sf::Vector2f vel = target - m_Position;
 	//Velocity = normalize(velocity)
 	vel = VectorMath::GetInstance()->Normalise(vel);
-	//Velocity = velocity * maxSpeed
 	//Orientation = getNewOrientation(orientation, velocity)
 	angleBetween = VectorMath::GetInstance()->GetAngleBetween(m_Direction, vel);
 
