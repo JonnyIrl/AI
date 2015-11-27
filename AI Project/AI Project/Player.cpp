@@ -2,9 +2,9 @@
 
 
 
-Player::Player()
+Player::Player(int WIDTH, int HEIGHT)
 {
-	if (!texture.loadFromFile("jet1.png"))
+	if (!texture.loadFromFile("Assets/jet1.png"))
 	{
 
 	}
@@ -15,7 +15,8 @@ Player::Player()
 	rotation = 0;
 	rotationSpeed = 90;
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
-
+	SCREEN_WIDTH = WIDTH;
+	SCREEN_HEIGHT = HEIGHT;
 }
 void Player::Update(float time)
 {
@@ -66,8 +67,8 @@ void Player::Rotate(int dir, float time)
 }
 void Player::KeepInBounds()
 {
-	if (m_Position.x + 36 < 0){ m_Position.x = 800 + 36; }
-	else if (m_Position.x > 836){ m_Position.x = -36; }
-	if (m_Position.y + 36 < 0){ m_Position.y = 600 +36; }
-	else if (m_Position.y > 636){ m_Position.y = -36; }
+	if (m_Position.x + 36 < 0){ m_Position.x = SCREEN_WIDTH + 36; }
+	else if (m_Position.x > SCREEN_WIDTH + 36){ m_Position.x = -36; }
+	if (m_Position.y + 36 < 0){ m_Position.y = SCREEN_HEIGHT +36; }
+	else if (m_Position.y > SCREEN_HEIGHT + 36){ m_Position.y = -36; }
 }

@@ -3,7 +3,7 @@
 
 Enemy::Enemy()
 {
-	if (!texture.loadFromFile("jet2.png"))
+	if (!texture.loadFromFile("Assets/jet2.png"))
 	{
 
 	}

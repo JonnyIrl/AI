@@ -84,13 +84,25 @@
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameStateController.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Pause.cpp" />
+    <ClCompile Include="Play.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ScoreScreen.cpp" />
+    <ClCompile Include="Splash.cpp" />
     <ClCompile Include="vectorMath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameStateController.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Pause.h" />
+    <ClInclude Include="Play.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ScoreScreen.h" />
+    <ClInclude Include="Splash.h" />
     <ClInclude Include="vectorMath.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,7 +10,7 @@ class Player
 {
 
 public:
-	Player();
+	Player(int SCREEN_WIDTH, int SCREEN_HEIGHT);
 	void Update(float time);
 	void SetPosition(sf::Vector2f pos);
 	void SetDirection(sf::Vector2f dir);
@@ -29,7 +29,8 @@ private:
 	void Rotate(int dir,float time);
 	float rotationSpeed; // is measured in degrees per second
 	void KeepInBounds();
-
+	int SCREEN_WIDTH;
+	int SCREEN_HEIGHT;
 
 };
 //public vector m_Direction;
