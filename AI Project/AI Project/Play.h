@@ -3,15 +3,23 @@
 
 #include <iostream>
 
+#include "Common.h"
 #include "GameStateController.h"
 #include "Player.h"
 #include "EnemyManager.h"
+#include "Camera.h"
+#include "MiniMap.h"
 
 class PlayGame{
 private:
 	Player* player;
+	sf::Texture backgroundTexture;
+	sf::Sprite background;
+	sf::Texture miniMapTexture;
+	sf::Sprite miniMapSprite;
+
 public:
-	PlayGame(int w, int h);
+	PlayGame(const int w,const int h);
 	~PlayGame(){
 		delete player;
 	}

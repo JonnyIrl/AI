@@ -33,8 +33,10 @@ void Player::Update(float time)
 
 
 	m_Position += m_Direction * speed * time;
-	KeepInBounds();
+	//KeepInBounds();
 	sprite.setPosition(m_Position);
+	Camera::GetInstance()->setViewPosition(m_Position);
+	MiniMap::GetInstance()->setViewPosition(m_Position);
 
 }
 void Player::SetPosition(sf::Vector2f pos)

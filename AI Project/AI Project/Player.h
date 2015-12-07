@@ -3,6 +3,8 @@
 
 #include "Common.h"
 #include "vectorMath.h"
+#include "Camera.h"
+#include "MiniMap.h"
 using namespace std;
 
 

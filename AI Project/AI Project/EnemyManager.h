@@ -24,8 +24,8 @@ private:
 	}
 
 	sf::Texture texture;
-	list<Enemy> basicEnemies;
-
+	list<Enemy*> basicEnemies;
+	int max_Enemies = 100;
 
 
 public:
@@ -33,6 +33,10 @@ public:
 	~EnemyManager()
 	{
 		instanceFlag = false;
+		for each(Enemy* e in basicEnemies)
+		{
+			delete e;
+		}
 	}
 	void Init(int w, int h);
 	void Update(float time, Player* p);

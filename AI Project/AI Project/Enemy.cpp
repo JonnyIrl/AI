@@ -1,9 +1,21 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy()
+Enemy::Enemy(sf::Texture* texture, sf::Vector2f pos)
 {
-	
+	sf::Vector2u size = texture->getSize();
+	m_Radius = (sqrt((size.x* size.x) + (size.y * size.y))) / 2;
+	sprite.setTexture(*texture);
+	sprite.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
+	maxSpeed = 100;
+	speed = 100;
+	orientation = 0;
+	angleBetween = 0;
+	acceleration = 0;
+	rotationSpeed = 100;
+	m_Direction = sf::Vector2f(1, 0);
+	m_Position = pos;
+	sprite.setPosition(m_Position);
 	
 }
 
@@ -76,7 +88,6 @@ void Enemy::seek(sf::Vector2f target)
 	angleBetween = VectorMath::GetInstance()->GetAngleBetween(m_Direction, vel);
 
 }
-
 void Enemy::Rotate(float time)
 {
 	//cout << angleBetween << endl;

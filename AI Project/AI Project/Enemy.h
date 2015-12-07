@@ -11,7 +11,11 @@ class Enemy
 {
 
 public:
-	Enemy();
+	Enemy(sf::Texture* texture, sf::Vector2f pos);
+	~Enemy()
+	{
+		cout << "Deleteing Enemy" << endl;
+	}
 	void Init(sf::Texture* texture, sf::Vector2f pos);
 	void Update(float time, Player* p);
 	void SetPosition(sf::Vector2f pos);

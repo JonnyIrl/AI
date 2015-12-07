@@ -11,6 +11,9 @@
 ///Entrypoint of application 
 //////////////////////////////////////////////////////////// 
 
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 800;
+
 int main()
 {
 
@@ -24,8 +27,7 @@ int main()
 	// Create the main window 
 	//Screen dimension constants
 
-	const int SCREEN_WIDTH = 1280;
-	const int SCREEN_HEIGHT = 800;
+	
 	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32), "SFML First Program");
 	
 	/*Initialsie the game modes*/
