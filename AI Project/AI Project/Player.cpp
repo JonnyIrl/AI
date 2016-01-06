@@ -11,7 +11,11 @@ Player::Player(int WIDTH, int HEIGHT)
 	sprite.setTexture(texture);
 	sprite.setOrigin(35.5f, 20);
 
-	speed = 200;
+	speed = 0;
+	accerationRate = 50;
+	accelertation = 0;
+	max_Speed = 300;
+	friction = -10;
 	rotation = 0;
 	rotationSpeed = 90;
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
@@ -20,6 +24,7 @@ Player::Player(int WIDTH, int HEIGHT)
 }
 void Player::Update(float time)
 {
+	accelertation = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		// left key is pressed: move our character
@@ -30,9 +35,34 @@ void Player::Update(float time)
 		// left key is pressed: move our character
 		Rotate(1, time);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		if (speed < max_Speed)
+		{
+			accelertation = accerationRate;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		if (speed > 0)
+		{
+			accelertation = -accerationRate;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		BulletManager::GetInstance()->AddPlayerBullet(m_Position,rotation,400,10);
+	}
+	
 
-
-	m_Position += m_Direction * speed * time;
+	//s=ut+(1/2)a(t(t))
+	m_Position += m_Direction * speed * time + m_Direction * 0.5f* accelertation * time *time;
+	//v=u+at
+	speed += accelertation* time;
+	if (speed > 0)
+	{
+		speed += friction* time;
+	}
 	//KeepInBounds();
 	sprite.setPosition(m_Position);
 	Camera::GetInstance()->setViewPosition(m_Position);

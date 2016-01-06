@@ -5,6 +5,7 @@
 #include "vectorMath.h"
 #include "Camera.h"
 #include "MiniMap.h"
+#include "BulletManager.h"
 using namespace std;
 
 
@@ -23,7 +24,9 @@ public:
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
-	float speed; // measure in pixels per second 
+
+	float speed, max_Speed, accelertation, accerationRate; // measure in pixels per second 
+	float friction;
 	sf::Vector2f m_Direction;
 	sf::Vector2f m_Position;
 	float m_Radius;
