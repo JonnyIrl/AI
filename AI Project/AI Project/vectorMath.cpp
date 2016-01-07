@@ -43,3 +43,8 @@ float VectorMath::GetDotProduct(sf::Vector2f vec1, sf::Vector2f vec2)
 	return (vec1.x * vec2.x) + (vec1.y * vec2.y);
 
 }
+float VectorMath::getDistanceBetween(sf::Vector2f vec1, sf::Vector2f vec2)
+{
+	sf::Vector2f temp = vec2 - vec1;
+	return GetLength(temp);
+}

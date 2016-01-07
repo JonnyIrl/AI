@@ -17,6 +17,7 @@ private:
 	static EnemyManager* instance;
 	EnemyManager()
 	{
+		basicEnemies = new list<Enemy*>();
 		if (!texture.loadFromFile("Assets/jet2.png"))
 		{
 
@@ -24,8 +25,9 @@ private:
 	}
 
 	sf::Texture texture;
-	list<Enemy*> basicEnemies;
-	int max_Enemies = 100;
+	list<Enemy*>* basicEnemies;
+	int max_Enemies = 10;
+
 
 
 public:
@@ -33,11 +35,13 @@ public:
 	~EnemyManager()
 	{
 		instanceFlag = false;
-		for each(Enemy* e in basicEnemies)
+		for each(Enemy* e in *basicEnemies)
 		{
 			delete e;
 		}
+		delete basicEnemies;
 	}
+	void AddPredator(sf::Vector2f pos);
 	void Init(int w, int h);
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);

@@ -7,6 +7,8 @@
 #include "GameStateController.h"
 #include "Player.h"
 #include "EnemyManager.h"
+#include "FactoryManager.h"
+#include "BulletManager.h"
 #include "Camera.h"
 #include "MiniMap.h"
 
