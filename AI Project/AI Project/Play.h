@@ -25,7 +25,7 @@ public:
 		delete player;
 	}
 	void Init();
-	void Update(float time);
+	void Update(float time, sf::Time animationTime);
 	void Draw(sf::RenderWindow& window);
 	void ResetAll();
 

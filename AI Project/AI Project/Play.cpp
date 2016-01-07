@@ -35,10 +35,10 @@ void PlayGame::Init()
 	
 }
 
-void PlayGame::Update(float time){
+void PlayGame::Update(float time, sf::Time animationTime){
 	EnemyManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
-	player->Update(time);
+	player->Update(time, animationTime);
 }
 
 void PlayGame::Draw(sf::RenderWindow& window){

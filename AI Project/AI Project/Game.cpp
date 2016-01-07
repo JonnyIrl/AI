@@ -17,7 +17,6 @@ const int SCREEN_HEIGHT = 800;
 
 int main()
 {
-
 	//gamestates
 	Menu* menu;
 	PlayGame* play;
@@ -70,7 +69,7 @@ int main()
 			menu->Update(time);
 			break;
 		case GameStateController::PLAY:
-			play->Update(time);
+			play->Update(time, timeSinceLastUpdate);
 			break;
 		case GameStateController::CREDITS:
 			break;
