@@ -11,8 +11,8 @@
 ///Entrypoint of application 
 //////////////////////////////////////////////////////////// 
 
-const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGHT = 800;
+ int SCREEN_WIDTH = 1280;
+ int SCREEN_HEIGHT = 800;
 
 int main()
 {
@@ -84,7 +84,7 @@ int main()
 
 
 		//prepare frame
-		window.clear();
+		window.clear(sf::Color::White);
 
 		//draw
 		switch (GameStateController::GetInstance()->getGameState())

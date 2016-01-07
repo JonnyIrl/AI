@@ -33,10 +33,10 @@ void Player::Update(float time)
 
 
 	m_Position += m_Direction * speed * time;
-	//KeepInBounds();
+	KeepInBounds();
 	sprite.setPosition(m_Position);
 	Camera::GetInstance()->setViewPosition(m_Position);
-	MiniMap::GetInstance()->setViewPosition(m_Position);
+	//MiniMap::GetInstance()->setViewPosition(m_Position);
 
 }
 void Player::SetPosition(sf::Vector2f pos)
@@ -69,8 +69,8 @@ void Player::Rotate(int dir, float time)
 }
 void Player::KeepInBounds()
 {
-	if (m_Position.x + 36 < 0){ m_Position.x = SCREEN_WIDTH + 36; }
-	else if (m_Position.x > SCREEN_WIDTH + 36){ m_Position.x = -36; }
-	if (m_Position.y + 36 < 0){ m_Position.y = SCREEN_HEIGHT +36; }
-	else if (m_Position.y > SCREEN_HEIGHT + 36){ m_Position.y = -36; }
+	if (m_Position.x + 36 < -SCREEN_WIDTH -36){ m_Position.x = SCREEN_WIDTH*2 + 36; }
+	else if (m_Position.x > SCREEN_WIDTH * 2 + 36){ m_Position.x = -SCREEN_WIDTH - 36; }
+	if (m_Position.y < -SCREEN_HEIGHT ){ m_Position.y = SCREEN_HEIGHT * 2 ; }
+	else if (m_Position.y > SCREEN_HEIGHT * 2 ){ m_Position.y = -SCREEN_HEIGHT ; }
 }

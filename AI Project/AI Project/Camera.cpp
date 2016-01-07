@@ -19,7 +19,7 @@ Camera* Camera::GetInstance()
 }
 void Camera::Init(int w, int h)
 {
-	camView.setCenter(w / 2, h / 2);
+	camView = sf::View(sf::FloatRect(w / 2, h / 2, w, h));
 	camView.setViewport(sf::FloatRect(0, 0, 1, 1));
 }
 void Camera::setCentre(sf::Vector2f pos)

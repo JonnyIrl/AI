@@ -1,8 +1,11 @@
 #include "Play.h"
 
 
-PlayGame::PlayGame(const int SCREEN_WIDTH, const int SCREEN_HEIGHT)
+PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 {
+
+	cout <<SCREEN_WIDTH << endl;
+
 	player = new Player(SCREEN_WIDTH,SCREEN_HEIGHT);
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 	EnemyManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -22,8 +25,8 @@ PlayGame::PlayGame(const int SCREEN_WIDTH, const int SCREEN_HEIGHT)
 	}
 	size = miniMapTexture.getSize();
 	miniMapSprite.setTexture(miniMapTexture);
-	//miniMapSprite.setScale(sf::Vector2f(SCREEN_WIDTH / size.x, SCREEN_HEIGHT / size.y));
-
+	miniMapSprite.setScale(sf::Vector2f(SCREEN_WIDTH / size.x, SCREEN_HEIGHT / size.y));
+	miniMapSprite.setPosition(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 
 	Camera::GetInstance()->Init(SCREEN_WIDTH,SCREEN_HEIGHT);
 	MiniMap::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);

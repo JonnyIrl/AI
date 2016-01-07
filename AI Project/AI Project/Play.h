@@ -19,7 +19,7 @@ private:
 	sf::Sprite miniMapSprite;
 
 public:
-	PlayGame(const int w,const int h);
+	PlayGame( int w, int h);
 	~PlayGame(){
 		delete player;
 	}
