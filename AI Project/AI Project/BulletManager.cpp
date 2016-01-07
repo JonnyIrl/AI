@@ -27,9 +27,19 @@ void BulletManager::AddPlayerBullet(sf::Vector2f pos, float rotation, float spee
 }
 void BulletManager::Update(float time)
 {
-	for each(BasicBullet* b in *playerBullets)
+	
+	for (list<BasicBullet*>::iterator it = playerBullets->begin(); it != playerBullets->end();)
 	{
-		 b->Update(time);
+		if ((*it)->Update(time))
+		{
+			it++;
+		}
+		else
+		{
+			delete (*it);
+			it = playerBullets->erase(it);
+		}
+		
 	}
 }
 void BulletManager::Draw(sf::RenderWindow& window)

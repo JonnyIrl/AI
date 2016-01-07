@@ -22,6 +22,7 @@ public:
 	float GetLength(sf::Vector2f vec);
 	float GetAngleBetween(sf::Vector2f vec1, sf::Vector2f vec2);
 	float GetDotProduct(sf::Vector2f vec1, sf::Vector2f vec2);
+	float getDistanceBetween(sf::Vector2f vec1, sf::Vector2f vec2);
 private:
 	//variables
 	static bool instanceFlag;

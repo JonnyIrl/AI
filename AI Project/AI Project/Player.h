@@ -26,6 +26,8 @@ public:
 	void updateTex(sf::Texture texture);
 	void PlayDecellerationAnimation(sf::Time animationTime);
 	bool LoadTexture();
+	float timeSinceFire, fireDelay;
+	bool readyToFire;
 
 private:
 	sf::Texture texture;

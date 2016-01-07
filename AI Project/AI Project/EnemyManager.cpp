@@ -23,22 +23,29 @@ void EnemyManager::Init(int w, int h)
 	{
 		//Enemy e;
 		//e.Init(&texture, sf::Vector2f((rand() % w + 21),(rand() % h + 21)));
-		basicEnemies.push_back(new Enemy(&texture, sf::Vector2f((rand() % w + 21), (rand() % h + 21))));
+		basicEnemies->push_back(new Enemy(&texture, sf::Vector2f((rand() % w + 21), (rand() % h + 21))));
 	}
+
 }
 void EnemyManager::Update(float time , Player* p)
 {
 	//cout << p->GetPosition().x << ":" << p->GetPosition().y << endl;
-	for each(Enemy* e in basicEnemies)
+	for each(Enemy* e in *basicEnemies)
 	{
 		e->Update(time , p );
-		
 	}
+
+}
+
+void EnemyManager::AddPredator(sf::Vector2f pos)
+{
+	basicEnemies->push_back(new Enemy(&texture, pos));
 }
 void EnemyManager::Draw(sf::RenderWindow& window)
 {
-	for each(Enemy* e in basicEnemies)
+	for each(Enemy* e in *basicEnemies)
 	{
 		e->Draw(window);
 	}
+
 }

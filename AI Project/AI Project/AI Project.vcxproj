@@ -92,6 +92,8 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="FactoryManager.cpp" />
+    <ClCompile Include="FactoryShip.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateController.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -99,6 +101,7 @@
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Pvector.cpp" />
     <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="Splash.cpp" />
     <ClCompile Include="vectorMath.cpp" />
@@ -112,12 +115,15 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="FactoryManager.h" />
+    <ClInclude Include="FactoryShip.h" />
     <ClInclude Include="GameStateController.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MiniMap.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Pvector.h" />
     <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="Splash.h" />
     <ClInclude Include="vectorMath.h" />

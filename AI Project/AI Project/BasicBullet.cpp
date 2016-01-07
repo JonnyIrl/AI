@@ -17,12 +17,20 @@ BasicBullet::BasicBullet(sf::Vector2f pos, float rotation, float speed, float ti
 	m_sprite.setRotation(m_rotation);
 	m_sprite.setPosition(m_pos);
 }
-void BasicBullet::Update(float time)
+bool BasicBullet::Update(float time)
 {
 	//s=ut+(1/2)a(t(t))
 	m_pos += m_dir * m_speed * time + m_dir * 0.5f* m_friction * time *time;
 	m_speed += m_friction* time;
 	m_sprite.setPosition(m_pos);
+	m_timeAlive += time;
+
+	if (m_timeToLive <= m_timeAlive)
+	{
+		return false;
+	}
+
+	return true;
 }
 void BasicBullet::Draw(sf::RenderWindow& window)
 {

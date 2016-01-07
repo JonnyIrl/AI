@@ -7,6 +7,7 @@
 #include "GameStateController.h"
 #include "Player.h"
 #include "EnemyManager.h"
+#include "FactoryManager.h"
 #include "BulletManager.h"
 #include "Camera.h"
 #include "MiniMap.h"
@@ -20,7 +21,7 @@ private:
 	sf::Sprite miniMapSprite;
 
 public:
-	PlayGame(const int w,const int h);
+	PlayGame( int w, int h);
 	~PlayGame(){
 		delete player;
 	}

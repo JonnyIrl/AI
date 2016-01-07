@@ -39,6 +39,9 @@ Player::Player(int WIDTH, int HEIGHT)
 	m_Direction = sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(rotation)), sin(VectorMath::GetInstance()->ToRadian(rotation)));
 	SCREEN_WIDTH = WIDTH;
 	SCREEN_HEIGHT = HEIGHT;
+	timeSinceFire = 0;
+	fireDelay = 0.5f;
+	readyToFire = true;
 }
 
 bool Player::LoadTexture()
@@ -104,12 +107,29 @@ void Player::Update(float time, sf::Time animationTime)
 			accelertation = -accerationRate;
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (readyToFire)
 	{
-		BulletManager::GetInstance()->AddPlayerBullet(m_Position,rotation,400,10);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, 600, 3);
+			readyToFire = false;
+			timeSinceFire = 0;
+		}
+		
+	}
+	else 
+	{
+		timeSinceFire += time;
+		if (timeSinceFire >= fireDelay)
+		{
+			readyToFire = true;
+		}
 	}
 	
 
+
+	m_Position += m_Direction * speed * time;
+	KeepInBounds();
 	//s=ut+(1/2)a(t(t))
 	m_Position += m_Direction * speed * time + m_Direction * 0.5f* accelertation * time *time;
 	//v=u+at
@@ -122,7 +142,7 @@ void Player::Update(float time, sf::Time animationTime)
 	sprite.setPosition(m_Position);
 	m_playerAnimation.setPosition(m_Position);
 	Camera::GetInstance()->setViewPosition(m_Position);
-	MiniMap::GetInstance()->setViewPosition(m_Position);
+	//MiniMap::GetInstance()->setViewPosition(m_Position);
 
 }
 
@@ -172,8 +192,8 @@ void Player::Rotate(int dir, float time)
 }
 void Player::KeepInBounds()
 {
-	if (m_Position.x + 36 < 0){ m_Position.x = SCREEN_WIDTH + 36; }
-	else if (m_Position.x > SCREEN_WIDTH + 36){ m_Position.x = -36; }
-	if (m_Position.y + 36 < 0){ m_Position.y = SCREEN_HEIGHT +36; }
-	else if (m_Position.y > SCREEN_HEIGHT + 36){ m_Position.y = -36; }
+	if (m_Position.x + 36 < -SCREEN_WIDTH -36){ m_Position.x = SCREEN_WIDTH*2 + 36; }
+	else if (m_Position.x > SCREEN_WIDTH * 2 + 36){ m_Position.x = -SCREEN_WIDTH - 36; }
+	if (m_Position.y < -SCREEN_HEIGHT ){ m_Position.y = SCREEN_HEIGHT * 2 ; }
+	else if (m_Position.y > SCREEN_HEIGHT * 2 ){ m_Position.y = -SCREEN_HEIGHT ; }
 }

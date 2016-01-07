@@ -22,7 +22,7 @@ public:
 	{
 		cout << "Bullet deleted" << endl;
 	}
-	void Update(float time);
+	bool Update(float time);
 	void Draw(sf::RenderWindow& window);
 
 
