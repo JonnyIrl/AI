@@ -18,7 +18,7 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 	sf::Vector2u size = backgroundTexture.getSize();
 	background.setTexture(backgroundTexture);
 	background.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
-	background.setScale(sf::Vector2f((SCREEN_WIDTH * 3) / size.x, (SCREEN_HEIGHT * 3) / size.y));
+	background.setScale(sf::Vector2f((SCREEN_WIDTH * 5) / size.x, (SCREEN_HEIGHT * 5) / size.y));
 	background.setPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 
 	if (!miniMapTexture.loadFromFile("Assets/Minimap.png"))
