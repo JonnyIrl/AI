@@ -3,7 +3,7 @@
 
 #include "Common.h"
 #include "FactoryShip.h"
-#include "Player.h"
+#include "BasicBullet.h"
 #include <list>
 using namespace std;
 
@@ -43,6 +43,7 @@ public:
 	void Init(int w, int h);
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);
+	bool IsColiding(BasicBullet* b);
 
 
 };

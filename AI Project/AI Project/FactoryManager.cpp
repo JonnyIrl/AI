@@ -1,5 +1,9 @@
+
 #include "FactoryManager.h"
 
+
+
+#include "Player.h"
 
 bool FactoryManager::instanceFlag = false;
 FactoryManager* FactoryManager::instance = NULL;
@@ -28,11 +32,21 @@ void FactoryManager::Init(int w, int h)
 void FactoryManager::Update(float time, Player* p)
 {
 	//cout << p->GetPosition().x << ":" << p->GetPosition().y << endl;
-	
-	for each(FactoryShip* f in *factories)
+	for (list<FactoryShip*>::iterator it = factories->begin(); it != factories->end();)
 	{
-		f->Update(time, p, factories);
+		if ((*it)->IsAlive())
+		{
+			(*it)->Update(time, p, factories);
+			it++;
+		}
+		else
+		{
+			delete (*it);
+			it = factories->erase(it);
+		}
+
 	}
+	
 }
 void FactoryManager::Draw(sf::RenderWindow& window)
 {
@@ -40,4 +54,16 @@ void FactoryManager::Draw(sf::RenderWindow& window)
 	{
 		f->Draw(window);
 	}
+}
+
+bool FactoryManager::IsColiding(BasicBullet* b)
+{
+	for each(FactoryShip* f in *factories)
+	{
+		if (f->IsColiding(b->GetPosition(), b->GetRadius()))
+		{
+			return true;
+		}
+	}
+	return false;
 }

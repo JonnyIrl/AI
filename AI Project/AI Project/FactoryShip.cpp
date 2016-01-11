@@ -1,5 +1,8 @@
+
 #include "FactoryShip.h"
 
+#include "BulletManager.h"
+#include "EnemyManager.h"
 
 FactoryShip::FactoryShip(sf::Texture* texture, sf::Vector2f pos, float width,float height)
 {
@@ -16,8 +19,8 @@ FactoryShip::FactoryShip(sf::Texture* texture, sf::Vector2f pos, float width,flo
 	m_Direction = sf::Vector2f(1, 0);
 	m_Position = pos;
 	sprite.setPosition(m_Position);
-	fleeRange = 300;
-
+	fleeRange = 500;
+	noOfHits = 0;
 	acceleration = Pvector(0, 0);
 	velocity = Pvector(rand() % 3 - 2, rand() % 3 - 2); // Allows for range of -2 -> 2
 	location = Pvector(pos.x, pos.y);
@@ -26,8 +29,11 @@ FactoryShip::FactoryShip(sf::Texture* texture, sf::Vector2f pos, float width,flo
 	SCREEN_WIDTH = width;
 	SCREEN_HEIGHT = height;
 	timeSinceCreatedShip = 0;
-	createDelay = 5;
+	createDelay = rand() % 20 + 10 ;
 	canCreateShip = true;
+	timeSinceLastFire = 0;
+	fireDelay = 1;
+	canfire = true;
 }
 
 void FactoryShip::Init(sf::Texture* texture, sf::Vector2f pos)
@@ -43,6 +49,8 @@ void FactoryShip::Update(float time, Player* p, list<FactoryShip*>* v)
 		Flee(p->GetPosition());
 		Rotate(time);
 		move(time);
+		firePredatorMissile( time, p);
+		
 	}
 	else
 	{
@@ -287,5 +295,45 @@ void FactoryShip::createPredator(float time)
 		{
 			canCreateShip = true;
 		}
+	}
+}
+/*creates a new predator missile ship*/
+void FactoryShip::firePredatorMissile(float time, Player * p)
+{
+	
+	if (canfire)
+	{
+		BulletManager::GetInstance()->AddPredatorBullet(m_Position, 300, 10, p);
+		canfire = false;
+		timeSinceLastFire = 0;
+	}
+	else
+	{
+		timeSinceLastFire += time;
+		if (timeSinceLastFire >= fireDelay)
+		{
+			canfire = true;
+		}
+	}
+}
+bool FactoryShip::IsColiding(sf::Vector2f pos, float rad)
+{
+	if (VectorMath::GetInstance()->getDistanceBetween(pos, m_Position)< rad + m_Radius)
+	{
+		noOfHits++;
+		return true;
+	}
+	return false;
+}
+
+bool FactoryShip::IsAlive()
+{
+	if (noOfHits >= 4)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }

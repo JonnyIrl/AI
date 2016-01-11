@@ -1,10 +1,10 @@
 #ifndef FACTORYSHIP_h
 #define FACTORYSHIP_H
 #include "Common.h"
+#include "Pvector.h"
 #include "vectorMath.h"
 #include "Player.h"
-#include "Pvector.h"
-#include "EnemyManager.h"
+#include <list>
 
 using namespace std;
 #define PI 3.141592635
@@ -24,10 +24,11 @@ public:
 	void SetDirection(sf::Vector2f dir);
 	sf::Vector2f  GetPosition();
 	void Draw(sf::RenderWindow& window);
-
+	bool IsColiding(sf::Vector2f pos, float rad);
 	Pvector location;
 	Pvector velocity;
 	Pvector acceleration;
+	bool IsAlive();
 private:
 	//position
 	//variables
@@ -35,7 +36,7 @@ private:
 	float m_Radius; // radius of the object for colision detection
 	float fleeRange;
 	//methods
-
+	int noOfHits;
 	float SCREEN_WIDTH, SCREEN_HEIGHT;
 
 	//moving
@@ -80,11 +81,11 @@ private:
 
 	float angle(Pvector v);
 
-
+	void firePredatorMissile(float time, Player * p);
 	void createPredator(float time);
-	float timeSinceCreatedShip, createDelay;
-	bool canCreateShip;
-
+	float timeSinceCreatedShip, createDelay, timeSinceLastFire, fireDelay;
+	bool canCreateShip, canfire;
+	 
 
 
 };

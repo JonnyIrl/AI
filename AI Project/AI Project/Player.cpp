@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "BulletManager.h"
 
 
 Player::Player(int WIDTH, int HEIGHT)
@@ -28,7 +28,7 @@ Player::Player(int WIDTH, int HEIGHT)
 
 	sprite.setTexture(texture);
 	sprite.setOrigin(35.5f, 20);
-
+	m_playerAnimation.setOrigin(sf::Vector2f(35.5, 20));
 	speed = 0;
 	accerationRate = 50;
 	accelertation = 0;
@@ -42,6 +42,8 @@ Player::Player(int WIDTH, int HEIGHT)
 	timeSinceFire = 0;
 	fireDelay = 0.5f;
 	readyToFire = true;
+	noOfHits = 0;
+	m_Radius = texture.getSize().y/2;
 }
 
 bool Player::LoadTexture()
@@ -75,6 +77,10 @@ void Player::Update(float time, sf::Time animationTime)
 		if (speed < max_Speed)
 		{
 			accelertation = accerationRate;
+		}
+		else
+		{
+			speed = max_Speed;
 		}
 		
 		if (m_playerAnimation.getAnimation() != &m_pMoveAnimation)
@@ -179,6 +185,7 @@ sf::Vector2f  Player::GetPosition()
 void Player::Draw(sf::RenderWindow& window)
 {
 	//sprite.setRotation(rotation);
+	
 	m_playerAnimation.setRotation(rotation);
 	window.draw(m_playerAnimation);
 	//window.draw(sprite);
@@ -196,4 +203,13 @@ void Player::KeepInBounds()
 	else if (m_Position.x > SCREEN_WIDTH * 2 + 36){ m_Position.x = -SCREEN_WIDTH - 36; }
 	if (m_Position.y < -SCREEN_HEIGHT ){ m_Position.y = SCREEN_HEIGHT * 2 ; }
 	else if (m_Position.y > SCREEN_HEIGHT * 2 ){ m_Position.y = -SCREEN_HEIGHT ; }
+}
+bool Player::isColliding(sf::Vector2f position, float radius)
+{
+	if (VectorMath::GetInstance()->getDistanceBetween(position, m_Position)< radius + m_Radius)
+	{
+		noOfHits++;
+		return true;
+	}
+	return false;
 }

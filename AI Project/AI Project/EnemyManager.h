@@ -26,7 +26,7 @@ private:
 
 	sf::Texture texture;
 	list<Enemy*>* basicEnemies;
-	int max_Enemies = 10;
+	int max_Enemies = 0;
 
 
 

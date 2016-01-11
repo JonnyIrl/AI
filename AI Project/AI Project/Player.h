@@ -5,7 +5,7 @@
 #include "vectorMath.h"
 #include "Camera.h"
 #include "MiniMap.h"
-#include "BulletManager.h"
+
 #include "Animation.hpp"
 #include "AnimatedSprite.hpp"
 using namespace std;
@@ -28,6 +28,10 @@ public:
 	bool LoadTexture();
 	float timeSinceFire, fireDelay;
 	bool readyToFire;
+	sf::Vector2f getDirection(){ return m_Direction; }
+	sf::Vector2f getPosition(){ return m_Position; }
+	float getSpeed(){ return speed; }
+	bool isColliding(sf::Vector2f position, float radius);
 
 private:
 	sf::Texture texture;
@@ -44,7 +48,7 @@ private:
 	void KeepInBounds();
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
-
+	int noOfHits;
 	//Animation values
 	Animation m_pMoveAnimation;
 	Animation m_pStopMoveAnimation;
