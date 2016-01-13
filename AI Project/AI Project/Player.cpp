@@ -28,9 +28,11 @@ Player::Player(int WIDTH, int HEIGHT)
 
 	sprite.setTexture(texture);
 	sprite.setOrigin(35.5f, 20);
+	playerRect.setSize(sf::Vector2f(50, 40));
+	playerRect.setOrigin(sf::Vector2f(25, 20));
 	m_playerAnimation.setOrigin(sf::Vector2f(35.5, 20));
 	speed = 0;
-	accerationRate = 50;
+	accerationRate = 100;
 	accelertation = 0;
 	max_Speed = 300;
 	friction = -10;
@@ -40,7 +42,7 @@ Player::Player(int WIDTH, int HEIGHT)
 	SCREEN_WIDTH = WIDTH;
 	SCREEN_HEIGHT = HEIGHT;
 	timeSinceFire = 0;
-	fireDelay = 0.5f;
+	fireDelay = 0.25f;
 	readyToFire = true;
 	noOfHits = 0;
 	m_Radius = texture.getSize().y/2;
@@ -62,12 +64,12 @@ void Player::Update(float time, sf::Time animationTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		// left key is pressed: move our character
-		Rotate(-1, time);
+		Rotate(-2, time);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		// left key is pressed: move our character
-		Rotate(1, time);
+		Rotate(2, time);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
@@ -117,7 +119,7 @@ void Player::Update(float time, sf::Time animationTime)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
-			BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, 600, 3);
+			BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, 900, 3);
 			readyToFire = false;
 			timeSinceFire = 0;
 		}
@@ -146,6 +148,8 @@ void Player::Update(float time, sf::Time animationTime)
 	}
 	//KeepInBounds();
 	sprite.setPosition(m_Position);
+	playerRect.setPosition(sf::Vector2f(m_Position.x, m_Position.y));
+	playerRect.setRotation(rotation);
 	m_playerAnimation.setPosition(m_Position);
 	Camera::GetInstance()->setViewPosition(m_Position);
 	//MiniMap::GetInstance()->setViewPosition(m_Position);
@@ -188,6 +192,7 @@ void Player::Draw(sf::RenderWindow& window)
 	
 	m_playerAnimation.setRotation(rotation);
 	window.draw(m_playerAnimation);
+	//window.draw(playerRect);
 	//window.draw(sprite);
 }
 

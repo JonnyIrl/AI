@@ -9,6 +9,7 @@
 #include "EnemyManager.h"
 #include "FactoryManager.h"
 #include "BulletManager.h"
+#include "SwarmManager.h"
 #include "Camera.h"
 #include "MiniMap.h"
 

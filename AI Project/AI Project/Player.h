@@ -31,11 +31,15 @@ public:
 	sf::Vector2f getDirection(){ return m_Direction; }
 	sf::Vector2f getPosition(){ return m_Position; }
 	float getSpeed(){ return speed; }
+	float GetRadius(){ return m_Radius; }
+	sf::Sprite GetSprite(){ return sprite; }
 	bool isColliding(sf::Vector2f position, float radius);
+	sf::RectangleShape GetRectangle(){ return playerRect; }
 
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::RectangleShape playerRect;
 
 	float speed, max_Speed, accelertation, accerationRate; // measure in pixels per second 
 	float friction;

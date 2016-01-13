@@ -1,23 +1,23 @@
-#ifndef _FACTORYMANAGER_H_
-#define _FACTORYMANAGER_H_
+#ifndef _SWARMMANAGER_H_
+#define _SWARMMANAGER_H_
 
 #include "Common.h"
-#include "FactoryShip.h"
+#include "SwarmBoids.h"
 #include "BasicBullet.h"
 #include <list>
 using namespace std;
 
 
 
-class FactoryManager
+class SwarmManager
 {
 private:
 
 	static bool instanceFlag;
-	static FactoryManager* instance;
-	FactoryManager()
+	static SwarmManager* instance;
+	SwarmManager()
 	{
-		factories = new list<FactoryShip*>();
+		swarms = new list<SwarmBoids*>();
 		if (!factoryTexture.loadFromFile("Assets/factory.png"))
 		{
 
@@ -25,20 +25,20 @@ private:
 	}
 
 	sf::Texture factoryTexture;
-	list<FactoryShip*>* factories;
-	int max_Factories = 10;
+	list<SwarmBoids*>* swarms;
+	int max_Swarms = 10;
 
 
 public:
-	static FactoryManager* GetInstance();
-	~FactoryManager()
+	static SwarmManager* GetInstance();
+	~SwarmManager()
 	{
 		instanceFlag = false;
-		for each(FactoryShip* f in *factories)
+		for each(SwarmBoids* s in *swarms)
 		{
-			delete f;
+			delete s;
 		}
-		delete factories;
+		delete swarms;
 	}
 	void Init(int w, int h);
 	void Update(float time, Player* p);

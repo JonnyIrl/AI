@@ -10,6 +10,7 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 	EnemyManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 	FactoryManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SwarmManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 	BulletManager::GetInstance()->Init();
 	if (!backgroundTexture.loadFromFile("Assets/background.png"))
 	{
@@ -42,6 +43,7 @@ void PlayGame::Init()
 void PlayGame::Update(float time, sf::Time animationTime){
 	EnemyManager::GetInstance()->Update(time, player);
 	FactoryManager::GetInstance()->Update(time, player);
+	SwarmManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
 	player->Update(time, animationTime);
 }
@@ -53,6 +55,7 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	
 	EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
+	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
 	player->Draw(window);
 	//MiniMap
@@ -60,6 +63,7 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	window.draw(background);
 	EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
+	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
 	player->Draw(window);
 	window.setView(MiniMap::GetInstance()->getStaticView());

@@ -1,5 +1,6 @@
 #include "BasicBullet.h"
 #include "FactoryManager.h"
+#include "SwarmManager.h"
 #include "vectorMath.h"
 
 BasicBullet::BasicBullet(sf::Vector2f pos, float rotation, float speed, float timeToLive, sf::Texture* texture)
@@ -50,7 +51,7 @@ bool BasicBullet::Update(float time)
 	m_sprite.setPosition(m_pos);
 	m_timeAlive += time;
 	
-	if (m_timeToLive <= m_timeAlive|| FactoryManager::GetInstance()->IsColiding(this))
+	if (m_timeToLive <= m_timeAlive|| FactoryManager::GetInstance()->IsColiding(this) || SwarmManager::GetInstance()->IsColiding(this))
 	{
 		return false;
 	}
@@ -118,6 +119,8 @@ void BasicBullet::intercept()
 	//seek(newTarget)
 	seek(newTarget);
 }
+
+
 void BasicBullet::Rotate(float time)
 {
 	//cout << angleBetween << endl;

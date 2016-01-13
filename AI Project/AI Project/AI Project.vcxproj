@@ -104,6 +104,8 @@
     <ClCompile Include="Pvector.cpp" />
     <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="SwarmBoids.cpp" />
+    <ClCompile Include="SwarmManager.cpp" />
     <ClCompile Include="vectorMath.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +128,8 @@
     <ClInclude Include="Pvector.h" />
     <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="Splash.h" />
+    <ClInclude Include="SwarmBoids.h" />
+    <ClInclude Include="SwarmManager.h" />
     <ClInclude Include="vectorMath.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
