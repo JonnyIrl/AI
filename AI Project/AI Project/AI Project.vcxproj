@@ -98,6 +98,8 @@
     <ClCompile Include="GameStateController.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MiniMap.cpp" />
+    <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="Obstacles.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -122,6 +124,8 @@
     <ClInclude Include="GameStateController.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MiniMap.h" />
+    <ClInclude Include="ObstacleManager.h" />
+    <ClInclude Include="Obstacles.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Player.h" />

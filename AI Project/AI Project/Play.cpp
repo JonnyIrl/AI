@@ -1,6 +1,8 @@
 #include "Play.h"
 
 
+Obstacles obj;
+
 PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 {
 
@@ -33,6 +35,7 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 
 	Camera::GetInstance()->Init(SCREEN_WIDTH,SCREEN_HEIGHT);
 	MiniMap::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
+
 }
 
 void PlayGame::Init()
@@ -46,6 +49,7 @@ void PlayGame::Update(float time, sf::Time animationTime){
 	SwarmManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
 	player->Update(time, animationTime);
+	obj.Update(animationTime);
 }
 
 void PlayGame::Draw(sf::RenderWindow& window){

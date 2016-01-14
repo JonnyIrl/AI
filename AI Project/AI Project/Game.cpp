@@ -81,8 +81,6 @@ int main()
 			break;
 		}//end switch
 
-
-
 		//prepare frame
 		window.clear(sf::Color::White);
 

@@ -12,6 +12,7 @@
 #include "SwarmManager.h"
 #include "Camera.h"
 #include "MiniMap.h"
+#include "Obstacles.h"
 
 class PlayGame{
 private:
