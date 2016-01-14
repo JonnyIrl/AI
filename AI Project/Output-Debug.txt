@@ -1,0 +1,66 @@
+﻿'AI Project.exe' (Win32): Loaded 'C:\Users\Jonny\Desktop\AI\AI Project\Debug\AI Project.exe'. Symbols loaded.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\SFML-2.3.2\bin\sfml-system-d-2.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\SFML-2.3.2\bin\sfml-graphics-d-2.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp120d.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\SFML-2.3.2\bin\sfml-window-d-2.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcr120d.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\user32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\opengl32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmmbase.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\glu32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ddraw.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\devobj.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dciman32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msctf.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atiglpxx.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atioglxx.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dwmapi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atiadlxy.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shell32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\windows.storage.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shlwapi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\SHCore.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\profapi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\psapi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\propsys.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\userenv.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wtsapi32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ws2_32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\nsi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\IPHLPAPI.DLL'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winnsi.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wintrust.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msasn1.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\crypt32.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atigktxx.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\atigktxx.dll'
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atigktxx.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dinput.dll'. Cannot find or open the PDB file.
+'AI Project.exe' (Win32): Loaded 'C:\Windows\SysWOW64\hid.dll'. Cannot find or open the PDB file.
+The thread 0x1d38 has exited with code 0 (0x0).
+The thread 0xe30 has exited with code 0 (0x0).
+The thread 0x370 has exited with code 0 (0x0).
+The thread 0x1e14 has exited with code 0 (0x0).
+The program '[8044] AI Project.exe' has exited with code 0 (0x0).

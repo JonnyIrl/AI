@@ -10,9 +10,7 @@ using namespace std;
 class ObstacleManager
 {
 public:
-	~ObstacleManager();
-
-	static ObstacleManager* GetInstance();
+	~ObstacleManager()
 	{
 		instanceFlag = false;
 		for each(Obstacles* e in *basicAsteroids)
@@ -21,6 +19,8 @@ public:
 		}
 		delete basicAsteroids;
 	}
+
+	static ObstacleManager* GetInstance();
 
 	void Init(int w, int h);
 	void Update(sf::Time time, Player* p);

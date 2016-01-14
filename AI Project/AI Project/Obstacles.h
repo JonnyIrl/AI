@@ -12,14 +12,22 @@
 class Obstacles
 {
 public:
-	Obstacles();
-	~Obstacles();
+	Obstacles(sf::Vector2f pos);
+	~Obstacles()
+	{
+		cout << "Deleteing Asteroid" << endl;
+	}
 	bool IsCollidingWithPlayer(Player* p);
 	bool LoadTexture();
-	void Update(sf::Time time);
+	bool IsAlive();
+	void Update(sf::Time time, Player* p);
+	void Draw(sf::RenderWindow& window);
 
 private:
 	sf::Sprite sprite;
+	sf::Vector2f m_position;
+	float m_radius;
+	int noOfHits;
 	sf::Texture texture;
 	Animation m_asteroidMoveAnimation;
 	AnimatedSprite m_asteroidAnimatedSprite;

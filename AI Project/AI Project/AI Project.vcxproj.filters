@@ -23,8 +23,8 @@
     <ClCompile Include="vectorMath.cpp" />
     <ClCompile Include="SwarmBoids.cpp" />
     <ClCompile Include="SwarmManager.cpp" />
-    <ClCompile Include="Obstacles.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
+    <ClCompile Include="Obstacles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedSprite.hpp" />
