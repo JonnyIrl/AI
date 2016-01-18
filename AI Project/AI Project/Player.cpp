@@ -24,6 +24,11 @@ Player::Player(int WIDTH, int HEIGHT)
 		firstFrame = 0;
 		m_upPressedOnce = false;
 		playerDecelleration = true;
+
+		speedPowerUpActive = false;
+		healthPowerUpActive = false;
+		shieldPowerUpActive = false;
+
 	}
 
 	sprite.setTexture(texture);
@@ -46,6 +51,8 @@ Player::Player(int WIDTH, int HEIGHT)
 	readyToFire = true;
 	noOfHits = 0;
 	m_Radius = texture.getSize().y/2;
+	bulletSpeed = 900;
+	//speedPowerUpTime = 0;
 }
 
 bool Player::LoadTexture()
@@ -76,28 +83,62 @@ void Player::Update(float time, sf::Time animationTime)
 		if (m_upPressedOnce)
 			m_upPressedOnce = true;
 
-		if (speed < max_Speed)
+		//If the player has the speed powerup
+		if (speedPowerUpActive)
 		{
-			accelertation = accerationRate;
-		}
-		else
-		{
-			speed = max_Speed;
-		}
-		
-		if (m_playerAnimation.getAnimation() != &m_pMoveAnimation)
-			m_playerAnimation.setAnimation(m_pMoveAnimation);
-		//Used to keep the image on the last thruster update
-		if (m_playerAnimation.m_currentFrame == lastframe)
-		{
-			m_playerAnimation.setFrame(lastframe);
-			if (playerDecelleration)
-				playerDecelleration = false;
+			if (speed < max_Speed + 150)
+			{
+				accelertation = accerationRate + 50;
+			}
+
+			else
+			{
+				speed = max_Speed + 150;
+			}
+
+			if (m_playerAnimation.getAnimation() != &m_pMoveAnimation)
+				m_playerAnimation.setAnimation(m_pMoveAnimation);
+			//Used to keep the image on the last thruster update
+			if (m_playerAnimation.m_currentFrame == lastframe)
+			{
+				m_playerAnimation.setFrame(lastframe);
+				if (playerDecelleration)
+					playerDecelleration = false;
+			}
+
+			else
+			{
+				m_playerAnimation.update(animationTime);
+			}
+
 		}
 
 		else
 		{
-			m_playerAnimation.update(animationTime);
+
+			if (speed < max_Speed)
+			{
+				accelertation = accerationRate;
+			}
+			else
+			{
+				speed = max_Speed;
+			}
+
+			if (m_playerAnimation.getAnimation() != &m_pMoveAnimation)
+				m_playerAnimation.setAnimation(m_pMoveAnimation);
+			//Used to keep the image on the last thruster update
+			if (m_playerAnimation.m_currentFrame == lastframe)
+			{
+				m_playerAnimation.setFrame(lastframe);
+				if (playerDecelleration)
+					playerDecelleration = false;
+			}
+
+			else
+			{
+				m_playerAnimation.update(animationTime);
+			}
 		}
 	}
 
@@ -119,9 +160,19 @@ void Player::Update(float time, sf::Time animationTime)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
-			BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, 900, 3);
-			readyToFire = false;
-			timeSinceFire = 0;
+			if (speedPowerUpActive)
+			{
+				BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, bulletSpeed + 800, 3);
+				readyToFire = false;
+				timeSinceFire = 0;
+			}
+
+			else
+			{
+				BulletManager::GetInstance()->AddPlayerBullet(m_Position + m_Direction*35.0f, rotation, bulletSpeed, 3);
+				readyToFire = false;
+				timeSinceFire = 0;
+			}
 		}
 		
 	}
@@ -154,6 +205,25 @@ void Player::Update(float time, sf::Time animationTime)
 	Camera::GetInstance()->setViewPosition(m_Position);
 	//MiniMap::GetInstance()->setViewPosition(m_Position);
 
+
+	//Checks for the powerups.
+	if (speedPowerUpActive)
+	{
+		speedTimer = speedClock.getElapsedTime().asSeconds();
+
+		if (speedTimer >= 10)
+		{
+			speedPowerUpActive = false;
+		}
+	}
+
+}
+
+void Player::RestartClock()
+{
+	speedClock.restart();
+	speedTimer = 0;
+	speedPowerUpActive = true;
 }
 
 

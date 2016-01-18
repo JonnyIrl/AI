@@ -66,21 +66,20 @@ void SwarmBoids::Update(float time, Player* p, list<SwarmBoids*>* v)
 {
 	if (VectorMath::GetInstance()->getDistanceBetween(m_Position, p->GetPosition()) < fleeRange)
 	{
-		//Flee(p->GetPosition());
 		Rotate(time);
 		move(time);
-		//firePredatorMissile(time, p);
 
 	}
 	else
 	{
 		location = Pvector(m_Position.x, m_Position.y);
-		//flock(v);
-		//updateflocking(time);
+		flock(v);
+		updateflocking(time);
 		m_Position = sf::Vector2f(location.x, location.y);
 		orientation = angle(velocity) - 90;
 		//createPredator(time);
 	}
+
 	intercept(p->GetPosition(), p->getDirection(), p->getSpeed());
 
 	//Checks collision with the player.
@@ -133,7 +132,7 @@ sf::Vector2f  SwarmBoids::GetPosition()
 
 void SwarmBoids::Draw(sf::RenderWindow& window)
 {
-	sprite.setColor(sf::Color::Black);
+	sprite.setColor(sf::Color::White);
 	sprite.setRotation(orientation);
 	window.draw(sprite);
 }

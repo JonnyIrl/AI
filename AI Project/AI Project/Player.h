@@ -35,6 +35,7 @@ public:
 	sf::Sprite GetSprite(){ return sprite; }
 	bool isColliding(sf::Vector2f position, float radius);
 	sf::RectangleShape GetRectangle(){ return playerRect; }
+	void RestartClock();
 
 private:
 	sf::Texture texture;
@@ -60,6 +61,11 @@ private:
 	std::size_t lastframe, firstFrame;
 	bool m_upPressedOnce;
 	bool playerDecelleration;
+
+	float bulletSpeed;
+	sf::Clock speedClock;
+	float speedTimer;
+	bool speedPowerUpActive, healthPowerUpActive, shieldPowerUpActive;
 };
 //public vector m_Direction;
 

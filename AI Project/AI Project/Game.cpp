@@ -28,7 +28,7 @@ int main()
 	//Screen dimension constants
 
 	
-	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32), "SFML First Program");
+	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32), "Space Wars!");
 	
 	/*Initialsie the game modes*/
 	menu = new Menu(SCREEN_WIDTH, SCREEN_HEIGHT);

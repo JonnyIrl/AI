@@ -103,6 +103,8 @@
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="PowerupManager.cpp" />
     <ClCompile Include="Pvector.cpp" />
     <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="Splash.cpp" />
@@ -129,6 +131,8 @@
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Powerup.h" />
+    <ClInclude Include="PowerupManager.h" />
     <ClInclude Include="Pvector.h" />
     <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="Splash.h" />

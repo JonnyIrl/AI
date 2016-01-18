@@ -1,8 +1,5 @@
 
 #include "FactoryManager.h"
-
-
-
 #include "Player.h"
 
 bool FactoryManager::instanceFlag = false;

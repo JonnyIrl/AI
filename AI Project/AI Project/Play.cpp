@@ -10,8 +10,9 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 	EnemyManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 	FactoryManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
-	SwarmManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
-	ObstacleManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SwarmManager::GetInstance()->Init(SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2);
+	ObstacleManager::GetInstance()->Init(SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2);
+	PowerupManager::GetInstance()->Init(SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2);
 	BulletManager::GetInstance()->Init();
 	if (!backgroundTexture.loadFromFile("Assets/background1.png"))
 	{
@@ -20,11 +21,13 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 	sf::Vector2u size = backgroundTexture.getSize();
 	background.setTexture(backgroundTexture);
 	background.setOrigin(sf::Vector2f(size.x / 2, size.y / 2));
-	//background.setScale(sf::Vector2f(size.x, size.y));
+	background.setScale(sf::Vector2f(1.7f, 1.7f));
 
 	//background.setScale(sf::Vector2f((SCREEN_WIDTH * 3.15f) / size.x, (SCREEN_HEIGHT * 3.15f) / size.y));
 	cout << "Width = " << background.getGlobalBounds().width << "Height = " << background.getGlobalBounds().height << endl;
-	background.setPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
+	background.setPosition(0, 0);
+
+	//background.setPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 
 	if (!miniMapTexture.loadFromFile("Assets/Minimap.png"))
 	{
@@ -48,6 +51,7 @@ void PlayGame::Init()
 void PlayGame::Update(float time, sf::Time animationTime){
 	EnemyManager::GetInstance()->Update(time, player);
 	FactoryManager::GetInstance()->Update(time, player);
+	PowerupManager::GetInstance()->Update(time, player);
 	SwarmManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
 	ObstacleManager::GetInstance()->Update(animationTime, player);
@@ -64,6 +68,8 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
 	ObstacleManager::GetInstance()->Draw(window);
+	PowerupManager::GetInstance()->Draw(window);
+
 	player->Draw(window);
 	//MiniMap
 	window.setView(MiniMap::GetInstance()->getView());
@@ -73,6 +79,7 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
 	ObstacleManager::GetInstance()->Draw(window);
+	PowerupManager::GetInstance()->Draw(window);
 	player->Draw(window);
 	window.setView(MiniMap::GetInstance()->getStaticView());
 	window.draw(miniMapSprite);

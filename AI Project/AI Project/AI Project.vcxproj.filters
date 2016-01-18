@@ -25,6 +25,8 @@
     <ClCompile Include="SwarmManager.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
     <ClCompile Include="Obstacles.cpp" />
+    <ClCompile Include="PowerupManager.cpp" />
+    <ClCompile Include="Powerup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedSprite.hpp" />
@@ -51,5 +53,7 @@
     <ClInclude Include="SwarmManager.h" />
     <ClInclude Include="Obstacles.h" />
     <ClInclude Include="ObstacleManager.h" />
+    <ClInclude Include="PowerupManager.h" />
+    <ClInclude Include="Powerup.h" />
   </ItemGroup>
 </Project>

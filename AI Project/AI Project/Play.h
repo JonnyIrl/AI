@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include "MiniMap.h"
 #include "ObstacleManager.h"
+#include "PowerupManager.h"
 
 class PlayGame{
 private:
