@@ -14,7 +14,7 @@ Obstacles::Obstacles(sf::Vector2f pos)
 		m_asteroidMoveAnimation.addFrame(sf::IntRect(500, 0, 125, 125));
 
 
-		m_asteroidAnimatedSprite = AnimatedSprite(sf::seconds(0.13f));
+		m_asteroidAnimatedSprite = AnimatedSprite(sf::seconds(0.25f));
 		m_asteroidAnimatedSprite.setAnimation(m_asteroidMoveAnimation);
 
 		//Setup the sprite.
@@ -64,6 +64,7 @@ bool Obstacles::IsCollidingWithPlayer(Player* p)
 	if (sprite.getGlobalBounds().intersects(p->GetRectangle().getGlobalBounds()))
 	{
 		std::cout << "Asteroid hit the player" << endl;
+		p->PlayerLoseHealth();
 		return true;
 	}
 

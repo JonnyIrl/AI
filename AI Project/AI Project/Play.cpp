@@ -40,6 +40,7 @@ PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
 
 	Camera::GetInstance()->Init(SCREEN_WIDTH,SCREEN_HEIGHT);
 	MiniMap::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
+	HUD::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 }
 
@@ -49,20 +50,19 @@ void PlayGame::Init()
 }
 
 void PlayGame::Update(float time, sf::Time animationTime){
-	player->Update(time, animationTime);
 	//EnemyManager::GetInstance()->Update(time, player);
 	FactoryManager::GetInstance()->Update(time, player);
 	PowerupManager::GetInstance()->Update(time, player);
 	SwarmManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
 	ObstacleManager::GetInstance()->Update(animationTime, player);
+	player->Update(time, animationTime);
 }
 
 void PlayGame::Draw(sf::RenderWindow& window){
 
 	//game Window
 	window.draw(background);
-	player->Draw(window);
 
 	//EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
@@ -70,19 +70,25 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	BulletManager::GetInstance()->Draw(window);
 	ObstacleManager::GetInstance()->Draw(window);
 	PowerupManager::GetInstance()->Draw(window);
+	player->Draw(window);
 
 	//MiniMap
 	window.setView(MiniMap::GetInstance()->getView());
 	window.draw(background);
-	player->Draw(window);
 	//EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
 	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
 	ObstacleManager::GetInstance()->Draw(window);
 	PowerupManager::GetInstance()->Draw(window);
+	player->Draw(window);
 	window.setView(MiniMap::GetInstance()->getStaticView());
 	window.draw(miniMapSprite);
+
+	//HUD VIEW
+	window.setView(HUD::GetInstance()->getView());
+	window.draw(player->PlayerHealthHUD());
+	window.draw(player->PlayerShieldHUD());
 	//reset view
 	window.setView(Camera::GetInstance()->getView());
 }

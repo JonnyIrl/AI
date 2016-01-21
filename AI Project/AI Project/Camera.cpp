@@ -38,3 +38,8 @@ void Camera::setViewPosition(sf::Vector2f pos)
 {
 	camView.setCenter(pos);
 }
+
+sf::Vector2f Camera::getViewPosition()
+{
+	return camView.getCenter();
+}

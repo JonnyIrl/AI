@@ -24,9 +24,10 @@
     <ClCompile Include="SwarmBoids.cpp" />
     <ClCompile Include="SwarmManager.cpp" />
     <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\ObstacleManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Obstacles.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Powerup.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\PowerupManager.cpp" />
+    <ClCompile Include="Obstacles.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="PowerupManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedSprite.hpp" />
@@ -44,16 +45,17 @@
     <ClInclude Include="MiniMap.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="Play.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Pvector.h" />
     <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="Splash.h" />
     <ClInclude Include="vectorMath.h" />
     <ClInclude Include="SwarmBoids.h" />
     <ClInclude Include="SwarmManager.h" />
-    <ClInclude Include="Obstacles.h" />
     <ClInclude Include="ObstacleManager.h" />
     <ClInclude Include="PowerupManager.h" />
     <ClInclude Include="Powerup.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Obstacles.h" />
+    <ClInclude Include="HUD.h" />
   </ItemGroup>
 </Project>

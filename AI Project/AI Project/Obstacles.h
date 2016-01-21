@@ -4,9 +4,9 @@
 #include "Common.h"
 #include "Pvector.h"
 #include "vectorMath.h"
-#include "Player.h"
 #include "Animation.hpp"
 #include "AnimatedSprite.hpp"
+#include "Player.h"
 #include <list>
 
 class Obstacles
@@ -17,7 +17,7 @@ public:
 	{
 		cout << "Deleteing Asteroid" << endl;
 	}
-	bool IsCollidingWithPlayer(Player* p);
+	bool IsCollidingWithPlayer(Player* player);
 	bool LoadTexture();
 	bool IsAlive();
 	void Update(sf::Time time, Player* p);

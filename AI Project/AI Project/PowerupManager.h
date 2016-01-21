@@ -29,15 +29,28 @@ private:
 	PowerupManager()
 	{
 		powers = new list<Powerup*>();
-		if (!powerupTexture.loadFromFile("Assets/Powerups/speed.png"))
+		if (!speedUpTexture.loadFromFile("Assets/Powerups/speed.png"))
+		{
+
+		}
+
+		if (!healthTexture.loadFromFile("Assets/Powerups/health.png"))
+		{
+
+		}
+
+		if (!shieldTexture.loadFromFile("Assets/Powerups/shield.png"))
 		{
 
 		}
 	}
 
-	sf::Texture powerupTexture;
+	sf::Texture speedUpTexture;
+	sf::Texture healthTexture;
+	sf::Texture shieldTexture;
 	list<Powerup*>* powers;
-	int max_Powerups = 10;
+	int max_Powerups = 5;
+	//float RandomNumber(float Min, float Max);
 };
 
 

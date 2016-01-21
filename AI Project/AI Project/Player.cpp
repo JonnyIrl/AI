@@ -37,6 +37,16 @@ Player::Player(int WIDTH, int HEIGHT)
 		healthRectangle.setPosition(sf::Vector2f(0, 0));
 		healthRectangle.setTextureRect(sf::IntRect(1800, 0, 200, 50));
 
+
+		shieldRectangle.setSize(sf::Vector2f(200, 50));
+		shieldRectangle.setTexture(&shieldTexture);
+		shieldRectangle.setPosition(sf::Vector2f(200, 0));
+		shieldRectangle.setTextureRect(sf::IntRect(0, 0, 200, 50));
+
+		//Player and Shield have 10 images each indicating each health
+		shieldHealth = 10;
+		playerHealth = 10;
+
 	}
 
 	sprite.setTexture(texture);
@@ -61,6 +71,7 @@ Player::Player(int WIDTH, int HEIGHT)
 	//speedPowerUpTime = 0;
 }
 
+
 sf::RectangleShape Player::GetRectangle()
 {
 	return playerRect; 
@@ -74,6 +85,9 @@ bool Player::LoadTexture()
 	if (!healthTexture.loadFromFile("Assets/Health/healthSpriteSheet.png"))
 		return false;
 
+	if (!shieldTexture.loadFromFile("Assets/Shield/shieldSpriteSheetReverse.png"))
+		return false;
+
 
 	else
 		return true;
@@ -81,8 +95,154 @@ bool Player::LoadTexture()
 
 void Player::CheckHealth()
 {
+	if (playerHealth == 10)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(1800, 0, 200, 50));
+	}
+
+	else if (playerHealth == 9)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(1600, 0, 200, 50));
+	}
+
+	else if (playerHealth == 8)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(1400, 0, 200, 50));
+	}
+
+	else if (playerHealth == 7)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(1200, 0, 200, 50));
+	}
+
+	else if (playerHealth == 6)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(1000, 0, 200, 50));
+	}
+
+	else if (playerHealth == 5)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(800, 0, 200, 50));
+	}
+
+	else if (playerHealth == 4)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(600, 0, 200, 50));
+	}
+
+	else if (playerHealth == 3)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(400, 0, 200, 50));
+	}
+
+	else if (playerHealth == 2)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(200, 0, 200, 50));
+	}
+
+	else if (playerHealth == 1)
+	{
+		healthRectangle.setTextureRect(sf::IntRect(0, 0, 200, 50));
+	}
 
 }
+void Player::CheckShield()
+{
+	if (shieldHealth == 10)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(0, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 9)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(200, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 8)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(400, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 7)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(600, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 6)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(800, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 5)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(1000, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 4)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(1200, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 3)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(1400, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 2)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(1600, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 1)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(1800, 0, 200, 50));
+	}
+
+	else if (shieldHealth == 0)
+	{
+		shieldRectangle.setTextureRect(sf::IntRect(2000, 0, 200, 50));
+	}
+
+}
+void Player::PlayerLoseHealth()
+{
+	//Check if the player still has a shield.
+	if (shieldHealth > 0)
+	{
+		shieldHealth--;
+		//Update Shield Texture
+		CheckShield();
+	}
+
+	//If the player has no shield left then decrement the health
+	else
+	{
+		playerHealth--;
+		//Update Health Texture
+		CheckHealth();
+	}
+
+	if (playerHealth == 0)
+		cout << "GAME OVER YOU LOSE" << endl;
+}
+void Player::PlayerIncreaseHealth()
+{
+	playerHealth += 2;
+
+	if (playerHealth > 10)
+		playerHealth = 10;
+
+	CheckHealth();
+}
+void Player::PlayerIncreaseShield()
+{
+	shieldHealth += 2;
+	if (shieldHealth > 10)
+		shieldHealth = 10;
+
+	CheckShield();
+}
+
 
 void Player::Update(float time, sf::Time animationTime)
 {
@@ -222,6 +382,8 @@ void Player::Update(float time, sf::Time animationTime)
 	playerRect.setRotation(rotation);
 	m_playerAnimation.setPosition(m_Position);
 	Camera::GetInstance()->setViewPosition(m_Position);
+	HUD::GetInstance()->setViewPosition(sf::Vector2f(250, 400));
+	//healthRectangle.setPosition(sf::Vector2f(Camera::GetInstance()->getViewPosition().x - 700, Camera::GetInstance()->getViewPosition().y - 700));
 	//MiniMap::GetInstance()->setViewPosition(m_Position);
 
 
@@ -280,7 +442,7 @@ void Player::Draw(sf::RenderWindow& window)
 	//sprite.setRotation(rotation);
 	
 	m_playerAnimation.setRotation(rotation);
-	window.draw(healthRectangle);
+	//window.draw(healthRectangle);
 	window.draw(m_playerAnimation);
 	//window.draw(playerRect);
 	//window.draw(sprite);

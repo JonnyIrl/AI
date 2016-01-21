@@ -24,6 +24,8 @@ Powerup::Powerup(sf::Texture* texture, sf::Vector2f pos, float width, float heig
 	playerShield = isShield;
 	playerPowerSpeedUpActive = isSpeed;
 	enemeyPowerSpeedUpActive = isSpeed;
+
+	std::cout << "POWER UP LOCATION = " << m_Position.x << "," << m_Position.y << endl;
 }
 
 void Powerup::Update(float time, Player* p, list<Powerup*>* v)
@@ -37,17 +39,13 @@ void Powerup::Update(float time, Player* p, list<Powerup*>* v)
 		//If its the players health power up then increase the players health
 		if (playerHealth)
 		{
-			//INCREASE PLAYER HEALTH CODE HERE
-			//Have a check in the player class that stops health going above 10 for example.
-			//player.health += 5;
+			p->PlayerIncreaseHealth();
 		}
 
 		//If its the players shield power up then increase the players shield
 		if (playerShield)
 		{
-			//INCREASE PLAYER SHEILD CODE HERE
-			//Have a check in the player class that stops shield going above 10 for example.
-			//player.shield += 5;
+			p->PlayerIncreaseShield();
 		}
 
 		//If its the players speed power up then increase the players max speed

@@ -279,10 +279,11 @@ float SwarmBoids::angle(Pvector v)
 
 bool SwarmBoids::IsCollidingWithPlayer(Player* p)
 {
-
+	
 	if (sprite.getGlobalBounds().intersects(p->GetRectangle().getGlobalBounds()))
 	{
 		std::cout << "Swarm hit the player" << endl;
+		p->PlayerLoseHealth();
 		return true;
 	}
 

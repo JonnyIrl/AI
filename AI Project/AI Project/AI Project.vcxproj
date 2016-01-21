@@ -83,9 +83,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\ObstacleManager.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Obstacles.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Powerup.cpp" />
-    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\PowerupManager.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BasicBullet.cpp" />
@@ -100,11 +97,15 @@
     <ClCompile Include="FactoryShip.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateController.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MiniMap.cpp" />
+    <ClCompile Include="Obstacles.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="PowerupManager.cpp" />
     <ClCompile Include="Pvector.cpp" />
     <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="Splash.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="FactoryManager.h" />
     <ClInclude Include="FactoryShip.h" />
     <ClInclude Include="GameStateController.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MiniMap.h" />
     <ClInclude Include="ObstacleManager.h" />

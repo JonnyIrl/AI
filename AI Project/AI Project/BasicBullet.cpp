@@ -56,6 +56,7 @@ bool BasicBullet::Update(float time)
 		return false;
 	}
 
+
 	return true;
 }
 bool BasicBullet::UpdatePredator(float time)
@@ -68,8 +69,15 @@ bool BasicBullet::UpdatePredator(float time)
 	m_sprite.setPosition(m_pos);
 	m_timeAlive += time;
 
-	if (m_timeToLive <= m_timeAlive || m_target->isColliding(m_pos,m_radius))
+	if (m_timeToLive <= m_timeAlive)
 	{
+		return false;
+	}
+
+	//If the Predator bullet collides with the player decrement the health
+	if (m_target->isColliding(m_pos, m_radius))
+	{
+		m_target->PlayerLoseHealth();
 		return false;
 	}
 

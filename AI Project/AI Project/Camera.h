@@ -28,5 +28,6 @@ public:
 	sf::View getView();
 	void setView(sf::View v);
 	void setViewPosition(sf::Vector2f pos);
+	sf::Vector2f getViewPosition();
 };
 #endif

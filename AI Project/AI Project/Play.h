@@ -11,6 +11,7 @@
 #include "BulletManager.h"
 #include "SwarmManager.h"
 #include "Camera.h"
+#include "HUD.h"
 #include "MiniMap.h"
 #include "ObstacleManager.h"
 #include "PowerupManager.h"
