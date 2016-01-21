@@ -29,12 +29,18 @@ Player::Player(int WIDTH, int HEIGHT)
 		healthPowerUpActive = false;
 		shieldPowerUpActive = false;
 
+		playerRect.setSize(sf::Vector2f(50, 40));
+		playerRect.setOrigin(sf::Vector2f(25, 20));
+
+		healthRectangle.setSize(sf::Vector2f(200, 50));
+		healthRectangle.setTexture(&healthTexture);
+		healthRectangle.setPosition(sf::Vector2f(0, 0));
+		healthRectangle.setTextureRect(sf::IntRect(1800, 0, 200, 50));
+
 	}
 
 	sprite.setTexture(texture);
 	sprite.setOrigin(35.5f, 20);
-	playerRect.setSize(sf::Vector2f(50, 40));
-	playerRect.setOrigin(sf::Vector2f(25, 20));
 	m_playerAnimation.setOrigin(sf::Vector2f(35.5, 20));
 	speed = 0;
 	accerationRate = 100;
@@ -55,14 +61,27 @@ Player::Player(int WIDTH, int HEIGHT)
 	//speedPowerUpTime = 0;
 }
 
+sf::RectangleShape Player::GetRectangle()
+{
+	return playerRect; 
+}
+
 bool Player::LoadTexture()
 {
 	if (!texture.loadFromFile("Assets/Player/playerSpriteSheet.png"))
 		return false;
 
+	if (!healthTexture.loadFromFile("Assets/Health/healthSpriteSheet.png"))
+		return false;
+
 
 	else
 		return true;
+}
+
+void Player::CheckHealth()
+{
+
 }
 
 void Player::Update(float time, sf::Time animationTime)
@@ -261,6 +280,7 @@ void Player::Draw(sf::RenderWindow& window)
 	//sprite.setRotation(rotation);
 	
 	m_playerAnimation.setRotation(rotation);
+	window.draw(healthRectangle);
 	window.draw(m_playerAnimation);
 	//window.draw(playerRect);
 	//window.draw(sprite);
