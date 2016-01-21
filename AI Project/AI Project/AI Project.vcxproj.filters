@@ -23,10 +23,10 @@
     <ClCompile Include="vectorMath.cpp" />
     <ClCompile Include="SwarmBoids.cpp" />
     <ClCompile Include="SwarmManager.cpp" />
-    <ClCompile Include="ObstacleManager.cpp" />
-    <ClCompile Include="Obstacles.cpp" />
-    <ClCompile Include="PowerupManager.cpp" />
-    <ClCompile Include="Powerup.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\ObstacleManager.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Obstacles.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\Powerup.cpp" />
+    <ClCompile Include="..\..\..\..\..\Downloads\AI_CPP_FILES-2016-01-20\AI CPP FILES\PowerupManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedSprite.hpp" />

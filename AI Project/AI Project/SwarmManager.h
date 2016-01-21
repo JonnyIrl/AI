@@ -18,7 +18,7 @@ private:
 	SwarmManager()
 	{
 		swarms = new list<SwarmBoids*>();
-		if (!factoryTexture.loadFromFile("Assets/factory.png"))
+		if (!factoryTexture.loadFromFile("Assets/Swarm/swarm.png"))
 		{
 
 		}
