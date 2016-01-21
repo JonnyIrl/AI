@@ -1,5 +1,5 @@
-#ifndef PLAYER
-#define PLAYER
+#ifndef _PLAYER_H
+#define _PLAYER_H
 
 #include "Common.h"
 #include "vectorMath.h"
@@ -20,7 +20,9 @@ public:
 	void SetPosition(sf::Vector2f pos);
 	void SetDirection(sf::Vector2f dir);
 	sf::Vector2f  GetPosition();
+	sf::RectangleShape GetRectangle();
 	void Draw(sf::RenderWindow& window);
+	void CheckHealth();
 
 	//Animation method
 	void updateTex(sf::Texture texture);
@@ -34,13 +36,14 @@ public:
 	float GetRadius(){ return m_Radius; }
 	sf::Sprite GetSprite(){ return sprite; }
 	bool isColliding(sf::Vector2f position, float radius);
-	sf::RectangleShape GetRectangle(){ return playerRect; }
 	void RestartClock();
 
 private:
 	sf::Texture texture;
+	sf::Texture healthTexture;
 	sf::Sprite sprite;
 	sf::RectangleShape playerRect;
+	sf::RectangleShape healthRectangle;
 
 	float speed, max_Speed, accelertation, accerationRate; // measure in pixels per second 
 	float friction;
@@ -68,7 +71,4 @@ private:
 	bool speedPowerUpActive, healthPowerUpActive, shieldPowerUpActive;
 };
 //public vector m_Direction;
-
-
-
 #endif 
