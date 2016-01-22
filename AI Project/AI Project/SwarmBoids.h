@@ -37,7 +37,7 @@ private:
 	//variables
 	sf::Vector2f m_Position;// posiiton of enemy 
 	float m_Radius; // radius of the object for colision detection
-	float fleeRange;
+	float attackRange;
 	//methods
 	int noOfHits;
 	float SCREEN_WIDTH, SCREEN_HEIGHT;
@@ -67,14 +67,14 @@ private:
 	sf::Texture texture; //holds the sprites texture 
 	sf::Sprite sprite; //holds the sprite
 
-	void flock(list<SwarmBoids*>* v);
+	void Swarm(list<SwarmBoids*>* v, sf::Vector2f target);
 
 	void applyForce(Pvector force);
 	// Three Laws that boids follow
 	Pvector Separation(list<SwarmBoids*>* v);
 	Pvector Alignment(list<SwarmBoids*>* v);
 
-	void updateflocking(float time);
+	void updateSwarm(float time);
 
 	void seek(sf::Vector2f v);
 

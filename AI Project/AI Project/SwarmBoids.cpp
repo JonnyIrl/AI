@@ -19,7 +19,7 @@ SwarmBoids::SwarmBoids(sf::Texture* texture, sf::Vector2f pos, float width, floa
 	m_Direction = sf::Vector2f(1, 0);
 	m_Position = pos;
 	sprite.setPosition(m_Position);
-	fleeRange = 800;
+	attackRange = 400;
 	noOfHits = 0;
 	acceleration = Pvector(0, 0);
 	velocity = Pvector(rand() % 3 - 2, rand() % 3 - 2); // Allows for range of -2 -> 2
@@ -64,23 +64,23 @@ void SwarmBoids::intercept(sf::Vector2f target, sf::Vector2f playerDirection, fl
 
 void SwarmBoids::Update(float time, Player* p, list<SwarmBoids*>* v)
 {
-	if (VectorMath::GetInstance()->getDistanceBetween(m_Position, p->GetPosition()) < fleeRange)
+	if (VectorMath::GetInstance()->getDistanceBetween(m_Position, p->GetPosition()) < attackRange)
 	{
+		intercept(p->GetPosition(), p->getDirection(), p->getSpeed());
 		Rotate(time);
 		move(time);
-
 	}
 	else
 	{
 		location = Pvector(m_Position.x, m_Position.y);
-		flock(v);
-		updateflocking(time);
+		Swarm(v, p->getPosition());
+		updateSwarm(time);
 		m_Position = sf::Vector2f(location.x, location.y);
 		orientation = angle(velocity) - 90;
 		//createPredator(time);
 	}
 
-	intercept(p->GetPosition(), p->getDirection(), p->getSpeed());
+	
 
 	//Checks collision with the player.
 	if (IsCollidingWithPlayer(p))
@@ -160,18 +160,58 @@ void SwarmBoids::Rotate(float time)
 	m_Direction = VectorMath::GetInstance()->Normalise(sf::Vector2f(cos(VectorMath::GetInstance()->ToRadian(orientation)), sin(VectorMath::GetInstance()->ToRadian(orientation))));
 }
 
-void SwarmBoids::flock(list<SwarmBoids*>* v)
+void SwarmBoids::Swarm(list<SwarmBoids*>* v, sf::Vector2f target)
 {
-	Pvector sep = Separation(v);
-	Pvector ali = Alignment(v);
-	// Arbitrarily weight these forces
-	sep.mulScalar(1.5);
-	ali.mulScalar(1.0); // Might need to alter weights for different characteristics
-	//coh.mulScalar(1.0);
-	// Add the force vectors to acceleration
-	applyForce(sep);
-	applyForce(ali);
-	//applyForce(coh);
+	//Pvector sep = Separation(v);
+	//Pvector ali = Alignment(v);
+	//// Arbitrarily weight these forces
+	//sep.mulScalar(1.5);
+	//ali.mulScalar(1.0); // Might need to alter weights for different characteristics
+	////coh.mulScalar(1.0);
+	//// Add the force vectors to acceleration
+	//applyForce(sep);
+	//applyForce(ali);
+	////applyForce(coh);
+
+
+
+	/*		Lenard-Jones Potential function
+	Vector R = me.position - you.position
+	Real D = R.magnitude()
+	Real U = -A / pow(D, N) + B / pow(D, M)
+	R.normalise()
+	force = force + R*U
+	*/
+	Pvector	R;
+	Pvector sum(0, 0);
+	float A = 100, B = 5000, N = 1, M = 2;
+	Pvector t(target.x,target.y);
+	
+
+	// Your code here..
+	for each(SwarmBoids* f in *v)
+	{
+		if (f != this)
+		{
+			R.set(R.subTwoVector(location, f->location));
+			float D = R.magnitude();
+			float U = -A / pow(D, N) + B / pow(D, M);
+			R.normalize();
+			R.mulScalar(U);
+			sum.addVector(R);
+		}
+	}
+	// have swarm tend towards player by adding its positon as part of the swarm 
+	R.set(R.subTwoVector(location, t));
+	float D = R.magnitude();
+	float U = -A / pow(D, N) + B / pow(D, M);
+	R.normalize();
+	R.mulScalar(U);
+	sum.addVector(R);
+
+	sum.divScalar(v->size() );
+	sum.normalize();
+	applyForce(sum);
 }
 
 
@@ -257,7 +297,7 @@ Pvector SwarmBoids::Alignment(list<SwarmBoids*>* v)
 
 //updateflocking modifies velocity, location, and resets acceleration with values that
 //are given by the three laws.
-void SwarmBoids::updateflocking(float time)
+void SwarmBoids::updateSwarm(float time)
 {
 	//To make the slow down not as abrupt
 	acceleration.mulScalar(.4);
