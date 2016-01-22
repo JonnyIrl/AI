@@ -20,7 +20,7 @@ private:
 	
 	
 public:
-	static const int MENU = 0, PLAY = 1, PAUSE = 2, GAMEOVER = 3, CREDITS =4, SPLASH =5, SCORESCREEN =6;
+	static const int MENU = 0, PLAY = 1, PAUSE = 2, GAMEOVER = 3, CREDITS =4, SPLASH =5, CONTROLS =6;
 	static GameStateController* GetInstance();
 	~GameStateController()
 	{

@@ -5,6 +5,7 @@
 #include "Pause.h"
 #include "Splash.h"
 #include "ScoreScreen.h"
+#include "Controls.h"
 
 
 
@@ -22,7 +23,8 @@ int main()
 	PlayGame* play;
 	Pause* pause;
 	Splash* splash;
-	ScoreScreen* scoreScreen;
+	//ScoreScreen* controls;
+	Controls* controls;
 
 	// Create the main window 
 	//Screen dimension constants
@@ -35,7 +37,7 @@ int main()
 	play = new PlayGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 	pause = new Pause(SCREEN_WIDTH, SCREEN_HEIGHT);
 	splash = new Splash(SCREEN_WIDTH, SCREEN_HEIGHT);
-	scoreScreen = new ScoreScreen(SCREEN_WIDTH, SCREEN_HEIGHT);
+	controls = new Controls(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//clock & frame rate
 	sf::Clock mclock;
@@ -66,7 +68,7 @@ int main()
 		switch (GameStateController::GetInstance()->getGameState())
 		{
 		case GameStateController::MENU:
-			menu->Update(time);
+			menu->Update(time, window, Event);
 			break;
 		case GameStateController::PLAY:
 			play->Update(time, timeSinceLastUpdate);
@@ -77,7 +79,8 @@ int main()
 			break;
 		case GameStateController::SPLASH:
 			break;
-		case GameStateController::SCORESCREEN:
+		case GameStateController::CONTROLS:
+			controls->Update(time, window, Event);
 			break;
 		}//end switch
 
@@ -99,7 +102,8 @@ int main()
 			break;
 		case GameStateController::SPLASH:
 			break;
-		case GameStateController::SCORESCREEN:
+		case GameStateController::CONTROLS:
+			controls->Draw(window);
 			break;
 		}//end switch
 
@@ -113,7 +117,7 @@ int main()
 	delete play;
 	delete pause;
 	delete splash;
-	delete scoreScreen;
+	delete controls;
 
 	return EXIT_SUCCESS;
 }
