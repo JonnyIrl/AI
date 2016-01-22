@@ -16,7 +16,7 @@ class Player
 
 public:
 	Player(int SCREEN_WIDTH, int SCREEN_HEIGHT);
-	bool Update(float time, sf::Time animationTime);
+	void Update(float time, sf::Time animationTime);
 	void SetPosition(sf::Vector2f pos);
 	void SetDirection(sf::Vector2f dir);
 	sf::Vector2f  GetPosition();

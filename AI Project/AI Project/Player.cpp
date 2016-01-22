@@ -245,7 +245,7 @@ void Player::PlayerIncreaseShield()
 }
 
 
-bool Player::Update(float time, sf::Time animationTime)
+void Player::Update(float time, sf::Time animationTime)
 {
 	accelertation = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -324,7 +324,6 @@ bool Player::Update(float time, sf::Time animationTime)
 		{
 			alive = false;
 		}
-		return alive;
 	}
 
 	//Check for when the up key is not pressed then play the same animation but in reverse essentially.

@@ -23,7 +23,7 @@ void FactoryManager::Init(int w, int h)
 
 	for (int i = 0; i < max_Factories; i++)
 	{
-		factories->push_back(new FactoryShip(&factoryTexture, sf::Vector2f((rand() % w + 21), (rand() % h + 21)), w, h));
+		factories->push_back(new FactoryShip(&factoryTexture, sf::Vector2f((rand() % w * 3 -w), (rand() % h * 3 - h)), w, h));
 	}
 }
 void FactoryManager::Update(float time, Player* p)

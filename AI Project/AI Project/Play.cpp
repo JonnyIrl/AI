@@ -58,11 +58,8 @@ void PlayGame::Update(float time, sf::Time animationTime){
 	ObstacleManager::GetInstance()->Update(animationTime, player);
 	if (player->Alive())
 	{
-		if (!player->Update(time, animationTime))
-		{//if player dies on this update 
-			// add explosion
-
-		}
+		player->Update(time, animationTime);
+	
 	}
 	
 }
