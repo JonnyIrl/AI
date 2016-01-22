@@ -56,7 +56,15 @@ void PlayGame::Update(float time, sf::Time animationTime){
 	SwarmManager::GetInstance()->Update(time, player);
 	BulletManager::GetInstance()->Update(time);
 	ObstacleManager::GetInstance()->Update(animationTime, player);
-	player->Update(time, animationTime);
+	if (player->Alive())
+	{
+		if (!player->Update(time, animationTime))
+		{//if player dies on this update 
+			// add explosion
+
+		}
+	}
+	
 }
 
 void PlayGame::Draw(sf::RenderWindow& window){
@@ -70,8 +78,10 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	BulletManager::GetInstance()->Draw(window);
 	ObstacleManager::GetInstance()->Draw(window);
 	PowerupManager::GetInstance()->Draw(window);
-	player->Draw(window);
-
+	if (player->Alive())
+	{
+		player->Draw(window);
+	}
 	//MiniMap
 	window.setView(MiniMap::GetInstance()->getView());
 	window.draw(background);

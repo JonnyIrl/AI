@@ -68,6 +68,7 @@ Player::Player(int WIDTH, int HEIGHT)
 	noOfHits = 0;
 	m_Radius = texture.getSize().y/2;
 	bulletSpeed = 900;
+	alive = true;
 	//speedPowerUpTime = 0;
 }
 
@@ -244,7 +245,7 @@ void Player::PlayerIncreaseShield()
 }
 
 
-void Player::Update(float time, sf::Time animationTime)
+bool Player::Update(float time, sf::Time animationTime)
 {
 	accelertation = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -319,6 +320,11 @@ void Player::Update(float time, sf::Time animationTime)
 				m_playerAnimation.update(animationTime);
 			}
 		}
+		if (playerHealth <= 0)
+		{
+			alive = false;
+		}
+		return alive;
 	}
 
 	//Check for when the up key is not pressed then play the same animation but in reverse essentially.

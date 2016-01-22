@@ -16,7 +16,7 @@ class Player
 
 public:
 	Player(int SCREEN_WIDTH, int SCREEN_HEIGHT);
-	void Update(float time, sf::Time animationTime);
+	bool Update(float time, sf::Time animationTime);
 	void SetPosition(sf::Vector2f pos);
 	void SetDirection(sf::Vector2f dir);
 	sf::Vector2f  GetPosition();
@@ -43,6 +43,7 @@ public:
 	void RestartClock();
 	sf::RectangleShape PlayerHealthHUD(){ return healthRectangle; }
 	sf::RectangleShape PlayerShieldHUD(){ return shieldRectangle; }
+	bool Alive(){ return alive; }
 
 private:
 	sf::Texture texture;
@@ -77,7 +78,7 @@ private:
 	sf::Clock speedClock;
 	float speedTimer;
 	bool speedPowerUpActive, healthPowerUpActive, shieldPowerUpActive;
-
+	bool alive;
 	int shieldHealth;
 	int playerHealth;
 };
