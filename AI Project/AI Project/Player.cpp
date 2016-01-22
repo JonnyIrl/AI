@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "BulletManager.h"
+#include "GameStateController.h" 
 
 
 Player::Player(int WIDTH, int HEIGHT)
@@ -323,6 +324,7 @@ void Player::Update(float time, sf::Time animationTime)
 		if (playerHealth <= 0)
 		{
 			alive = false;
+			
 		}
 	}
 

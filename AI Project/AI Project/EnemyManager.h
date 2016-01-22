@@ -27,7 +27,7 @@ private:
 	sf::Texture texture;
 	list<Enemy*>* basicEnemies;
 	int max_Enemies = 0;
-
+	int screen_Width, screen_Height;
 
 
 public:
@@ -45,7 +45,7 @@ public:
 	void Init(int w, int h);
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);
-
+	void reset();
 
 };
 #endif

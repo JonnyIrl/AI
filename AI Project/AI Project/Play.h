@@ -23,7 +23,7 @@ private:
 	sf::Sprite background;
 	sf::Texture miniMapTexture;
 	sf::Sprite miniMapSprite;
-
+	int SCREEN_WIDTH, SCREEN_HEIGHT;
 public:
 	PlayGame( int w, int h);
 	~PlayGame(){

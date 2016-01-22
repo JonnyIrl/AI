@@ -78,6 +78,7 @@ int main()
 		case GameStateController::SPLASH:
 			break;
 		case GameStateController::SCORESCREEN:
+			scoreScreen->Update();
 			break;
 		}//end switch
 
@@ -100,6 +101,10 @@ int main()
 		case GameStateController::SPLASH:
 			break;
 		case GameStateController::SCORESCREEN:
+			sf::View view1;
+			view1.reset(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
+			window.setView(view1);
+			scoreScreen->Draw(window);
 			break;
 		}//end switch
 

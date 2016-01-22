@@ -10,7 +10,8 @@
 class ScoreScreen
 {
 private:
-	
+	sf::Texture texture;
+	sf::Sprite sprite;
 public:
 
 	ScoreScreen(int w, int h);
@@ -20,7 +21,7 @@ public:
 	}
 	void Init();
 	void Update();
-	void Draw();
+	void Draw(sf::RenderWindow& window);
 
 
 };

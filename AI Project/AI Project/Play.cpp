@@ -1,11 +1,11 @@
 #include "Play.h"
 
 
-PlayGame::PlayGame( int SCREEN_WIDTH,  int SCREEN_HEIGHT)
+PlayGame::PlayGame( int w,  int h)
 {
 
-	cout <<SCREEN_WIDTH << endl;
-
+	SCREEN_WIDTH = w;
+	SCREEN_HEIGHT = h;
 	player = new Player(SCREEN_WIDTH,SCREEN_HEIGHT);
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
 	//EnemyManager::GetInstance()->Init(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -61,6 +61,12 @@ void PlayGame::Update(float time, sf::Time animationTime){
 		player->Update(time, animationTime);
 	
 	}
+	else
+	{
+		ResetAll();
+		GameStateController::GetInstance()->SetGameState(GameStateController::GetInstance()->SCORESCREEN);
+	}
+
 	
 }
 
@@ -101,6 +107,18 @@ void PlayGame::Draw(sf::RenderWindow& window){
 }
 
 void PlayGame::ResetAll(){
+
+	delete player;
+	player = new Player(SCREEN_WIDTH, SCREEN_HEIGHT);
+	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
+	//enemymanger resET ALL
+	EnemyManager::GetInstance()->reset();
+	//SWRAM MANAGER REST ALL
+	//obstacle manager reset all
+	//factory manager rest all
+	//bullet managher reset all 
+	//powerup manager reset all
+
 
 }
 

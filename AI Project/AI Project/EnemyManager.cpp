@@ -23,9 +23,10 @@ void EnemyManager::Init(int w, int h)
 	{
 		//Enemy e;
 		//e.Init(&texture, sf::Vector2f((rand() % w + 21),(rand() % h + 21)));
-		basicEnemies->push_back(new Enemy(&texture, sf::Vector2f((rand() % w + 21), (rand() % h + 21))));
+		basicEnemies->push_back(new Enemy(&texture, sf::Vector2f((rand() % w*3 - w), (rand() % h*3 - h))));
 	}
-
+	screen_Width = w;
+	screen_Height = h;
 }
 void EnemyManager::Update(float time , Player* p)
 {
@@ -48,4 +49,18 @@ void EnemyManager::Draw(sf::RenderWindow& window)
 		e->Draw(window);
 	}
 
+}
+void EnemyManager::reset()
+{
+	for each(Enemy* e in *basicEnemies)
+	{
+		delete e;
+	}
+	delete basicEnemies;
+
+	basicEnemies = new list<Enemy*>();
+	for (int i = 0; i < max_Enemies; i++)
+	{
+		basicEnemies->push_back(new Enemy(&texture, sf::Vector2f((rand() % screen_Width*3 - screen_Width), (rand() % screen_Height*3 - screen_Height))));
+	}
 }
