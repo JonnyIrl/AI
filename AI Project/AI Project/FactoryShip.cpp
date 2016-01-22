@@ -94,7 +94,7 @@ sf::Vector2f  FactoryShip::GetPosition()
 
 void FactoryShip::Draw(sf::RenderWindow& window)
 {
-	sprite.setColor(sf::Color::Red);
+	//sprite.setColor(sf::Color::Red);
 	sprite.setRotation(orientation);
 	window.draw(sprite);
 }

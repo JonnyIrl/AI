@@ -5,6 +5,7 @@
 #include "Pause.h"
 #include "Splash.h"
 #include "ScoreScreen.h"
+#include "Controls.h"
 
 
 
@@ -22,6 +23,8 @@ int main()
 	PlayGame* play;
 	Pause* pause;
 	Splash* splash;
+	//ScoreScreen* controls;
+	Controls* controls;
 	ScoreScreen* scoreScreen;
 
 	// Create the main window 
@@ -35,6 +38,7 @@ int main()
 	play = new PlayGame(SCREEN_WIDTH, SCREEN_HEIGHT);
 	pause = new Pause(SCREEN_WIDTH, SCREEN_HEIGHT);
 	splash = new Splash(SCREEN_WIDTH, SCREEN_HEIGHT);
+	controls = new Controls(SCREEN_WIDTH, SCREEN_HEIGHT);
 	scoreScreen = new ScoreScreen(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//clock & frame rate
@@ -66,7 +70,7 @@ int main()
 		switch (GameStateController::GetInstance()->getGameState())
 		{
 		case GameStateController::MENU:
-			menu->Update(time);
+			menu->Update(time, window, Event);
 			break;
 		case GameStateController::PLAY:
 			play->Update(time, timeSinceLastUpdate);
@@ -79,6 +83,9 @@ int main()
 			break;
 		case GameStateController::SCORESCREEN:
 			scoreScreen->Update();
+			break;
+		case GameStateController::CONTROLS:
+			controls->Update(time, window, Event);
 			break;
 		}//end switch
 
@@ -101,10 +108,10 @@ int main()
 		case GameStateController::SPLASH:
 			break;
 		case GameStateController::SCORESCREEN:
-			sf::View view1;
-			view1.reset(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
-			window.setView(view1);
 			scoreScreen->Draw(window);
+			break;
+		case GameStateController::CONTROLS:
+			controls->Draw(window);
 			break;
 		}//end switch
 
@@ -118,7 +125,7 @@ int main()
 	delete play;
 	delete pause;
 	delete splash;
-	delete scoreScreen;
+	delete controls;
 
 	return EXIT_SUCCESS;
 }

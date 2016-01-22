@@ -1,5 +1,5 @@
-#ifndef _MENU_H_
-#define _MENU_H_
+#ifndef _CONTROLS_H_
+#define _CONTROLS_H_
 
 #include "Common.h"
 
@@ -8,20 +8,18 @@
 
 
 
-class Menu
+class Controls
 {
 private:
-	sf::Texture texture;
 	sf::Sprite sprite;
-	sf::Texture playTexture, controlsTexture, quitTexture;
-	sf::RectangleShape playRectangle, quitRectangle, controlsRectangle;
-	sf::Event Event;
+	sf::Texture playTexture, texture;
+	sf::RectangleShape playRectangle;
 public:
 
-	Menu(int w,int h);
-	~Menu()
+	Controls(int w, int h);
+	~Controls()
 	{
-	
+
 	}
 	void Init();
 	void Update(float time, sf::RenderWindow& window, sf::Event Event);

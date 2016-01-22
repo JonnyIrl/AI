@@ -59,7 +59,7 @@ public:
 	void AddPredatorBullet(sf::Vector2f pos,  float speed, float timeToLive, Player* target);
 	void Update(float time);
 	void Draw(sf::RenderWindow& window);
-
+	void reset();
 
 };
 #endif

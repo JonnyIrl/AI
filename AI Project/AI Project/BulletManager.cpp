@@ -73,3 +73,19 @@ void BulletManager::Draw(sf::RenderWindow& window)
 		b->Draw(window);
 	}
 }
+void BulletManager::reset()
+{
+	for each(BasicBullet* b in *playerBullets)
+	{
+		delete b;
+	}
+	delete playerBullets;
+	for each(BasicBullet* b in *predatorBullets)
+	{
+		delete b;
+	}
+	delete predatorBullets;
+
+	playerBullets = new list<BasicBullet*>();
+	predatorBullets = new list<BasicBullet*>();
+}

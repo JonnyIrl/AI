@@ -27,7 +27,7 @@ private:
 	sf::Texture factoryTexture;
 	list<FactoryShip*>* factories;
 	int max_Factories = 10;
-
+	int screen_width, screen_heigth;
 
 public:
 	static FactoryManager* GetInstance();
@@ -44,7 +44,7 @@ public:
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);
 	bool IsColiding(BasicBullet* b);
-
+	void Reset();
 
 };
 #endif

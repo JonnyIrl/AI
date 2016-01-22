@@ -26,8 +26,8 @@ private:
 
 	sf::Texture factoryTexture;
 	list<SwarmBoids*>* swarms;
-	int max_Swarms = 10;
-
+	int max_Swarms = 20;
+	int screen_width, screen_heigth;
 
 public:
 	static SwarmManager* GetInstance();
@@ -44,7 +44,7 @@ public:
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);
 	bool IsColiding(BasicBullet* b);
-
+	void Reset();
 
 };
 #endif

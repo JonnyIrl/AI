@@ -22,7 +22,7 @@ public:
 	void Init(int w, int h);
 	void Update(float time, Player* p);
 	void Draw(sf::RenderWindow& window);
-
+	void Reset();
 private:
 	static bool instanceFlag;
 	static PowerupManager* instance;
@@ -50,6 +50,7 @@ private:
 	sf::Texture shieldTexture;
 	list<Powerup*>* powers;
 	int max_Powerups = 5;
+	int screen_width, screen_height;
 	//float RandomNumber(float Min, float Max);
 };
 

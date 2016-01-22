@@ -20,7 +20,8 @@ FactoryManager* FactoryManager::GetInstance()
 }
 void FactoryManager::Init(int w, int h)
 {
-
+	screen_heigth = h;
+	screen_width = w;
 	for (int i = 0; i < max_Factories; i++)
 	{
 		factories->push_back(new FactoryShip(&factoryTexture, sf::Vector2f((rand() % w * 3 -w), (rand() % h * 3 - h)), w, h));
@@ -63,4 +64,21 @@ bool FactoryManager::IsColiding(BasicBullet* b)
 		}
 	}
 	return false;
+}
+void FactoryManager::Reset()
+{
+	//delete the old swarm
+	for each(FactoryShip* f in *factories)
+	{
+		delete f;
+	}
+	delete factories;
+	//create new swarm
+	factories = new list<FactoryShip*>();
+	for (int i = 0; i < max_Factories; i++)
+	{
+		factories->push_back(new FactoryShip(&factoryTexture, sf::Vector2f((rand() % screen_width * 3 - screen_width), (rand() % screen_heigth * 3 - screen_heigth)), screen_width, screen_heigth));
+
+	}
+
 }

@@ -24,7 +24,8 @@ PowerupManager* PowerupManager::GetInstance()
 void PowerupManager::Init(int w, int h)
 {
 	srand(time(NULL));
-
+	screen_width = w;
+	screen_height = h;
 	for (int i = 0; i < max_Powerups; i++)
 	{
 		int typeOfPowerUp = rand() % 3 + 1;
@@ -73,4 +74,35 @@ void PowerupManager::Draw(sf::RenderWindow& window)
 	{
 		p->Draw(window);
 	}
+}
+void PowerupManager::Reset()
+{
+	srand(time(NULL));
+	//delete the old swarm
+	for each(Powerup* p in *powers)
+	{
+		delete p;
+	}
+	delete powers;
+	//create new swarm
+	powers = new list<Powerup*>();
+	for (int i = 0; i < max_Powerups; i++)
+	{
+		int typeOfPowerUp = rand() % 3 + 1;
+		std::cout << "POWER UP = " << typeOfPowerUp << endl;
+
+		//If random number == 1 then spawn a SPEED boost powerup
+		if (typeOfPowerUp == 1)
+			powers->push_back(new Powerup(&speedUpTexture, sf::Vector2f(float(rand()) / RAND_MAX * 3000 - 1000, (rand() % screen_height + 21)), screen_width, screen_height, false, true, false));
+
+		//If random number == 2 then spawn a HEALTH boost powerup
+		if (typeOfPowerUp == 2)
+			powers->push_back(new Powerup(&healthTexture, sf::Vector2f(float(rand()) / RAND_MAX * 3000 - 1000, (rand() % screen_height + 21)), screen_width, screen_height, true, false, false));
+
+		//If random number == 3 then spawn a SHIELD boost powerup
+		if (typeOfPowerUp == 3)
+			powers->push_back(new Powerup(&shieldTexture, sf::Vector2f(float(rand()) / RAND_MAX * 3000 - 1000, (rand() % screen_height + 21)), screen_width, screen_height, false, false, true));
+
+	}
+
 }

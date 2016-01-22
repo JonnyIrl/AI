@@ -12,6 +12,7 @@ class ScoreScreen
 private:
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::View view1;
 public:
 
 	ScoreScreen(int w, int h);

@@ -321,11 +321,7 @@ void Player::Update(float time, sf::Time animationTime)
 				m_playerAnimation.update(animationTime);
 			}
 		}
-		if (playerHealth <= 0)
-		{
-			alive = false;
-			
-		}
+		
 	}
 
 	//Check for when the up key is not pressed then play the same animation but in reverse essentially.
@@ -388,6 +384,7 @@ void Player::Update(float time, sf::Time animationTime)
 	playerRect.setPosition(sf::Vector2f(m_Position.x, m_Position.y));
 	playerRect.setRotation(rotation);
 	m_playerAnimation.setPosition(m_Position);
+	//set the camera
 	Camera::GetInstance()->setViewPosition(m_Position);
 	HUD::GetInstance()->setViewPosition(sf::Vector2f(250, 400));
 	//healthRectangle.setPosition(sf::Vector2f(Camera::GetInstance()->getViewPosition().x - 700, Camera::GetInstance()->getViewPosition().y - 700));
@@ -404,7 +401,11 @@ void Player::Update(float time, sf::Time animationTime)
 			speedPowerUpActive = false;
 		}
 	}
+	if (playerHealth <= 0)
+	{
+		alive = false;
 
+	}
 }
 
 void Player::RestartClock()

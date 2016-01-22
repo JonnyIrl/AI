@@ -50,7 +50,7 @@ void PlayGame::Init()
 }
 
 void PlayGame::Update(float time, sf::Time animationTime){
-	//EnemyManager::GetInstance()->Update(time, player);
+	EnemyManager::GetInstance()->Update(time, player);
 	FactoryManager::GetInstance()->Update(time, player);
 	PowerupManager::GetInstance()->Update(time, player);
 	SwarmManager::GetInstance()->Update(time, player);
@@ -75,7 +75,7 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	//game Window
 	window.draw(background);
 
-	//EnemyManager::GetInstance()->Draw(window);
+	EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
 	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
@@ -88,7 +88,7 @@ void PlayGame::Draw(sf::RenderWindow& window){
 	//MiniMap
 	window.setView(MiniMap::GetInstance()->getView());
 	window.draw(background);
-	//EnemyManager::GetInstance()->Draw(window);
+	EnemyManager::GetInstance()->Draw(window);
 	FactoryManager::GetInstance()->Draw(window);
 	SwarmManager::GetInstance()->Draw(window);
 	BulletManager::GetInstance()->Draw(window);
@@ -111,13 +111,18 @@ void PlayGame::ResetAll(){
 	delete player;
 	player = new Player(SCREEN_WIDTH, SCREEN_HEIGHT);
 	player->SetPosition(sf::Vector2f(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2));
-	//enemymanger resET ALL
+	//enemymanger reset all 
 	EnemyManager::GetInstance()->reset();
-	//SWRAM MANAGER REST ALL
+	//swarm manager reset all
+	SwarmManager::GetInstance()->Reset();
 	//obstacle manager reset all
+	ObstacleManager::GetInstance()->Reset();
 	//factory manager rest all
+	FactoryManager::GetInstance()->Reset();
 	//bullet managher reset all 
+	BulletManager::GetInstance()->reset();
 	//powerup manager reset all
+	PowerupManager::GetInstance()->Reset();
 
 
 }

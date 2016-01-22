@@ -25,11 +25,11 @@ public:
 	void Init(int w, int h);
 	void Update(sf::Time time, Player* p);
 	void Draw(sf::RenderWindow& window);
-
+	void Reset();
 private:
 	static bool instanceFlag;
 	static ObstacleManager* instance;
-
+	int screen_width, screen_heigth;
 	ObstacleManager()
 	{
 		basicAsteroids = new list<Obstacles*>();
@@ -42,6 +42,7 @@ private:
 	sf::Texture texture;
 	list<Obstacles*>* basicAsteroids;
 	int max_Obstacles = 10;
+	
 
 };
 
